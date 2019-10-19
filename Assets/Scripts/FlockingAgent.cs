@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.AI;
-
+using Cinemachine;
 
 public class FlockingAgent : MonoBehaviour
 {
@@ -14,12 +14,17 @@ public class FlockingAgent : MonoBehaviour
         followPlayer
     }
 
-    public float size = 1.0f;    
+    public float size = 1.0f;
+
+    public GameObject hitParticleEffect;
 
     private FlockingManager flockingManager;
     private FlockingAgent neighborsSelected;
     private NavMeshAgent navMeshAgent;
     private Rigidbody rigidbody;
+
+    private CinemachineVirtualCamera vcam;
+    private CinemachineBasicMultiChannelPerlin noise;
 
     private GameObject player;    
 
@@ -31,7 +36,10 @@ public class FlockingAgent : MonoBehaviour
     private bool onceWall = false;
     private GameObject wallTarget;
     private bool canBreakTheWall = false;
-    private Vector3 basePosition;
+    private Vector3 basePositionAttack;
+    private bool attackOnce = false;
+
+    private bool onceIncrement = false;
 
     // Start is called before the first frame update
     void Start()
@@ -44,7 +52,10 @@ public class FlockingAgent : MonoBehaviour
 
         player = GameObject.FindGameObjectWithTag("Player");
 
-        basePosition = new Vector3();
+        basePositionAttack = new Vector3();
+
+        vcam = GameObject.Find("CM vcam1").GetComponent<CinemachineVirtualCamera>();
+        noise = vcam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
     }
 
     // Update is called once per frame
@@ -55,16 +66,24 @@ public class FlockingAgent : MonoBehaviour
             switch (currentAction)
             {
                 case Action.followPlayer:
-                    GetComponent<Collider>().enabled = true;
                     Follow();
+                    ResetCarac();
                     break;
 
                 case Action.destroyWall:
                     DestroyWall();
-                    GetComponent<Collider>().enabled = false;
                     break;
             }
         }
+    }
+
+    public void ResetCarac()
+    {
+        onceIncrement = false;
+        Noise(0.0f, 0.0f);
+        onceWall = false;
+        canBreakTheWall = false;
+        attackOnce = false;
     }
 
     public void JoinCrew()
@@ -76,13 +95,8 @@ public class FlockingAgent : MonoBehaviour
             {
                 neighFa = flockingManager.GetRandomAgentInCrew();
             }
-
             neighborsSelected = neighFa;
-
-           // Sequence searchSequence = DOTween.Sequence();
-           // searchSequence.Append(transform.DOMove(neighborsSelected.transform.position + offsetNeighbors, 1.0f)).OnComplete(() => SetIsInCrew(true));
         }
-
         isInCrew = true;
     }    
 
@@ -90,18 +104,23 @@ public class FlockingAgent : MonoBehaviour
     {
         if (!onceWall)
         {
-            navMeshAgent.SetDestination(GetPosNearPlayerForAttack());
+            navMeshAgent.SetDestination(basePositionAttack);
             onceWall = true;
         }
         else
         {
-            if(navMeshAgent.remainingDistance <= 0.1f)
+            if(navMeshAgent.remainingDistance <= 1.5f)
             {
-                basePosition = transform.position;
-                canBreakTheWall = true;
+                if (!onceIncrement)
+                {
+                    canBreakTheWall = true;
+                    wallTarget.GetComponent<Wall>().IncrementCountAgent();
+                    onceIncrement = true;
+                }
             }
         }
     }
+    
 
 
     public void SetAction(Action type)
@@ -112,7 +131,7 @@ public class FlockingAgent : MonoBehaviour
     
     public FlockingAgent GetNeighbor()
     {
-        return neighborsSelected;
+        return neighborsSelected;        
     }
     
 
@@ -160,16 +179,43 @@ public class FlockingAgent : MonoBehaviour
 
     public void AttackWall()
     {
-        Collider wallCollider = wallTarget.GetComponent<Collider>();
-        
-        float xPos = Random.Range(wallCollider.bounds.min.x, wallCollider.bounds.max.x);
-        float yPos = Random.Range(transform.position.y, transform.position.y + 1.0f);
-        float zPos = Random.Range(wallCollider.bounds.min.z, wallCollider.bounds.max.z);
+        if (!attackOnce)
+        {
+            attackOnce = true;
 
-        Sequence attackSequence = DOTween.Sequence();
-        attackSequence.Append(transform.DOJump(new Vector3(xPos, yPos, zPos), 0.0f, 1, 0.3f));
-        attackSequence.Append(transform.DOJump(basePosition, 2.0f, 1, 0.5f));
+            Collider wallCollider = wallTarget.GetComponent<Collider>();
 
+            Vector3 heading = new Vector3(wallTarget.transform.position.x, 0, wallTarget.transform.position.z) - new Vector3(transform.position.x, 0, transform.position.z); 
+            float distance = -heading.magnitude;
+            Vector3 direction = heading / distance;
+
+            float xPos = Random.Range(wallCollider.bounds.min.x, wallCollider.bounds.max.x);
+            float yPos = Random.Range(transform.position.y, transform.position.y + 1.0f);
+            float zPos = Random.Range(wallCollider.bounds.min.z, wallCollider.bounds.max.z);
+
+            Sequence attackSequence = DOTween.Sequence();
+            attackSequence.Append(transform.DOJump(new Vector3(xPos, yPos, zPos) + direction, 0.0f, 1, 0.3f)).OnStart(() => Noise(5.0f, 1.0f));
+            InstantiateEffect(hitParticleEffect, new Vector3(xPos, yPos, zPos) + direction);
+            attackSequence.Append(transform.DOJump(basePositionAttack, 2.0f, 1, 0.5f)).OnComplete(() => Noise(0.0f, 0.0f)).OnComplete(() => attackOnce = false);
+
+            wallTarget.GetComponent<Wall>().DecreaseHealth();
+        }
+    }
+
+    public void InstantiateEffect(GameObject effect, Vector3 position)
+    {
+       Destroy(Instantiate(effect, position, Quaternion.identity), effect.GetComponent<ParticleSystem>().main.duration);
+    }
+
+    public bool SetAttackPosition(Vector3 new_pos)
+    {
+        NavMeshHit hit;
+        if (NavMesh.SamplePosition(new_pos, out hit, 1.0f, NavMesh.AllAreas))
+        {
+            basePositionAttack = hit.position;
+            return true;
+        }
+        return false;
     }
 
 
@@ -187,5 +233,11 @@ public class FlockingAgent : MonoBehaviour
     public void SetCanBreakTheWall(bool canBreak)
     {
         canBreakTheWall = canBreak;
+    }
+
+    public void Noise(float amplitudeGain, float frequencyGain)
+    {
+        noise.m_AmplitudeGain = amplitudeGain;
+        noise.m_FrequencyGain = frequencyGain;
     }
 }

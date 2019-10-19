@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     private FlockingManager flockingManager;
     private Vector3 position;
     private Rigidbody rigidbody;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -55,6 +56,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.anyKey)
         {
+
             if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Z))
             {
                 moveDirection.z += 1.0f;
@@ -75,14 +77,10 @@ public class PlayerMovement : MonoBehaviour
             moveDirection.Normalize();
 
             rigidbody.velocity = moveDirection * flockingManager.playerSpeed;
-
-            // transform.DOMove(transform.position + moveDirection, 1 / flockingManager.speed);
-           // flockingManager.ResetDestination();
-
         }
         else
         {
-            rigidbody.velocity = Vector3.zero;
+            rigidbody.velocity = new Vector3(0, rigidbody.velocity.y, 0);
         }
     }
 }
