@@ -89,7 +89,7 @@ public class PlayerMovement : MonoBehaviour
 
             float angle = Angle(forwardVector, moveDirection);
 
-            if ( (moveDirection.x > 0.0 || moveDirection.y > 0.0 || moveDirection.z > 0.0) && !(moveDirection.z < 0.0 && moveDirection.x > 0.0))
+            if ( (moveDirection.x > 0.0 || moveDirection.y > 0.0 || moveDirection.z > 0.0)  && !(moveDirection.z < 0.0 && moveDirection.x > 0.0))
             {
                 angle = -angle;
             }
