@@ -7,16 +7,20 @@ using DG.Tweening;
 
 public class PlayerMovement : MonoBehaviour
 {
-
-    public float speed = 1.0f;
+   
     public float rangeRecruit = 5.0f;
-    
+
+    private FlockingManager flockingManager;
     private Vector3 position;
+    private Rigidbody rigidbody;
 
     // Start is called before the first frame update
     void Start()
     {
+        flockingManager = FlockingManager.instance;
+
         position = transform.position;
+        rigidbody = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -50,26 +54,36 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector3 moveDirection = new Vector3(0, 0, 0);
 
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Z))
+        if (Input.anyKey)
         {
-            moveDirection.z += 1.0f;
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            moveDirection.z -= 1.0f;
-        }
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.Q))
-        {
-            moveDirection.x -= 1.0f;
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            moveDirection.x += 1.0f;
-        }
+            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Z))
+            {
+                moveDirection.z += 1.0f;
+            }
+            if (Input.GetKey(KeyCode.S))
+            {
+                moveDirection.z -= 1.0f;
+            }
+            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.Q))
+            {
+                moveDirection.x -= 1.0f;
+            }
+            if (Input.GetKey(KeyCode.D))
+            {
+                moveDirection.x += 1.0f;
+            }
 
-        moveDirection.Normalize();
+            moveDirection.Normalize();
 
-        transform.DOMove(transform.position + moveDirection, 1/ speed);
-        
+            rigidbody.velocity = moveDirection * flockingManager.speed;
+
+            // transform.DOMove(transform.position + moveDirection, 1 / flockingManager.speed);
+           // flockingManager.ResetDestination();
+
+        }
+        else
+        {
+            rigidbody.velocity = Vector3.zero;
+        }
     }
 }
