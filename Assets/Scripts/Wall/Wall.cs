@@ -33,22 +33,29 @@ public class Wall : MonoBehaviour
     {
         if (player != null)
         {
-            foreach (FlockingAgent agent in flockingManager.GetAgentsInCrew())
+            if (flockingManager.GetNumberOfAgentsInCrew() >= numberOfAgentsNeedToBreak)
             {
+                foreach (FlockingAgent agent in flockingManager.GetAgentsInCrew())
+                {
+                    agent.SetAction(FlockingAgent.Action.destroyWall);
+                    agent.SetTargetWall(gameObject);
 
+                    Collider prisonnerCollider = prisonnerZone.GetComponent<Collider>();
 
-                Collider prisonnerCollider = prisonnerZone.GetComponent<Collider>();
+                    float xPos = Random.Range(prisonnerCollider.bounds.min.x, prisonnerCollider.bounds.max.x);
+                    float zPos = Random.Range(prisonnerCollider.bounds.min.z, prisonnerCollider.bounds.max.z);
 
-                float xPos = Random.Range(prisonnerCollider.bounds.min.x, prisonnerCollider.bounds.max.x);
-                float zPos = Random.Range(prisonnerCollider.bounds.min.z, prisonnerCollider.bounds.max.z);
-
-                agent.AttackWall(new Vector3(xPos, prisonnerZone.transform.position.y, zPos));
+                    agent.AttackWall(new Vector3(xPos, prisonnerZone.transform.position.y, zPos));                    
+                }
             }
-
         }
 
         if (health == 0)
         {
+            player = null;
+            Vector3 toTarget = (GameObject.FindGameObjectWithTag("Player").transform.position - transform.position).normalized;
+            angleSpeed = Vector3.Dot(toTarget, transform.forward) > 0 ? angleSpeed : -angleSpeed;
+
             Exit();
             if (transform.localEulerAngles.x > 270 || transform.localEulerAngles.x == 0.0f)
             {
@@ -56,9 +63,7 @@ public class Wall : MonoBehaviour
             }
             else
             {
-                Sequence sequence = DOTween.Sequence();
-                sequence.PrependInterval(1.0f);
-                sequence.Append(transform.DOMoveY(transform.position.y - 1.0f, 1.0f)).OnComplete(() => Destroy(this));
+                GetComponent<Collider>().enabled = false;
 
             }
         }
@@ -82,19 +87,6 @@ public class Wall : MonoBehaviour
         if (collision.collider.CompareTag("Player"))
         {
             player = collision.collider.transform;
-
-            foreach (FlockingAgent agent in flockingManager.GetAgentsInCrew())
-            {
-                agent.SetAction(FlockingAgent.Action.destroyWall);
-                agent.SetTargetWall(gameObject);
-
-                Collider prisonnerCollider = prisonnerZone.GetComponent<Collider>();
-
-                float xPos = Random.Range(prisonnerCollider.bounds.min.x, prisonnerCollider.bounds.max.x);
-                float zPos = Random.Range(prisonnerCollider.bounds.min.z, prisonnerCollider.bounds.max.z);
-
-                while (!agent.SetAttackPosition(new Vector3(xPos, prisonnerZone.transform.position.y, zPos))) ;
-            }
         }
     }
 
@@ -102,6 +94,7 @@ public class Wall : MonoBehaviour
     {
         if (collision.collider.CompareTag("Player"))
         {
+            player = null;
             Exit();
         }
     }
@@ -115,7 +108,6 @@ public class Wall : MonoBehaviour
             agent.SetCanBreakTheWall(false);
         }
         countAgent = 0;
-
-        player = null;
+        
     }
 }

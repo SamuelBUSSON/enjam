@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 1256673803681018014}
   - component: {fileID: 7508800822022904800}
   - component: {fileID: 6945252914350245096}
-  m_Layer: 0
+  - component: {fileID: 64249311}
+  m_Layer: 8
   m_Name: Prisonner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,6 +87,20 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!136 &64249311
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6317948151278466483}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.24
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.72, z: 0.04}
 --- !u!1001 &8137354014976844655
 PrefabInstance:
   m_ObjectHideFlags: 0
