@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using DG.Tweening;
 
 
@@ -9,10 +10,14 @@ public class PlayerMovement : MonoBehaviour
 {
    
     public float rangeRecruit = 5.0f;
+    public float speed = 500;
 
     private FlockingManager flockingManager;
     private Vector3 position;
     private Rigidbody rigidbody;
+
+    private NavMeshAgent navMeshAgent;
+    private Vector3 forwardVector;
     
 
     // Start is called before the first frame update
@@ -22,6 +27,12 @@ public class PlayerMovement : MonoBehaviour
 
         position = transform.position;
         rigidbody = GetComponent<Rigidbody>();
+
+        navMeshAgent = GetComponent<NavMeshAgent>();
+        forwardVector = new Vector3(0,0,0);
+        forwardVector = transform.forward;
+
+
     }
 
     // Update is called once per frame
@@ -76,6 +87,16 @@ public class PlayerMovement : MonoBehaviour
 
             moveDirection.Normalize();
 
+            float angle = Angle(forwardVector, moveDirection);
+
+            if ( (moveDirection.x > 0.0 || moveDirection.y > 0.0 || moveDirection.z > 0.0) && !(moveDirection.z < 0.0 && moveDirection.x > 0.0))
+            {
+                angle = -angle;
+            }
+
+            transform.DOLocalRotate(new Vector3(transform.eulerAngles.x, angle, transform.eulerAngles.z), 0.3f);
+                
+
             rigidbody.velocity = moveDirection * flockingManager.playerSpeed;
         }
         else
@@ -83,4 +104,10 @@ public class PlayerMovement : MonoBehaviour
             rigidbody.velocity = new Vector3(0, rigidbody.velocity.y, 0);
         }
     }
+
+    public float Angle(Vector3 from, Vector3 to)
+    {
+        return Mathf.Acos(Mathf.Clamp(Vector3.Dot(from.normalized, to.normalized), -1f, 1f)) * 57.29578f;
+    }
 }
+

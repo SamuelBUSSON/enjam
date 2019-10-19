@@ -26,6 +26,8 @@ public class FlockingAgent : MonoBehaviour
     private CinemachineVirtualCamera vcam;
     private CinemachineBasicMultiChannelPerlin noise;
 
+    private Animator animator;
+
     private GameObject player;    
 
     private bool isInCrew = false;
@@ -54,6 +56,8 @@ public class FlockingAgent : MonoBehaviour
 
         basePositionAttack = new Vector3();
 
+        animator = GetComponentInChildren<Animator>();        
+
         vcam = GameObject.Find("CM vcam1").GetComponent<CinemachineVirtualCamera>();
         noise = vcam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
     }
@@ -73,7 +77,7 @@ public class FlockingAgent : MonoBehaviour
                 case Action.destroyWall:
                     DestroyWall();
                     break;
-            }
+            }            
         }
     }
 
@@ -98,6 +102,9 @@ public class FlockingAgent : MonoBehaviour
             neighborsSelected = neighFa;
         }
         isInCrew = true;
+
+        animator.SetBool("IsIdle", false);
+        animator.SetBool("IsDancing", true);
     }    
 
     public void DestroyWall()
