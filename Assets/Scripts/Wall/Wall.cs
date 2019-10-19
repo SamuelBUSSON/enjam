@@ -31,18 +31,23 @@ public class Wall : MonoBehaviour
 
     private void Update()
     {
-        if(player != null)
+        if (player != null)
         {
-            if(countAgent == flockingManager.GetNumberOfAgentsInCrew() && countAgent >= flockingManager.GetNumberOfAgentsInCrew())
+            foreach (FlockingAgent agent in flockingManager.GetAgentsInCrew())
             {
-                foreach (FlockingAgent agent in flockingManager.GetAttackAgents())
-                {
-                    agent.AttackWall();
-                }
-            }            
+
+
+                Collider prisonnerCollider = prisonnerZone.GetComponent<Collider>();
+
+                float xPos = Random.Range(prisonnerCollider.bounds.min.x, prisonnerCollider.bounds.max.x);
+                float zPos = Random.Range(prisonnerCollider.bounds.min.z, prisonnerCollider.bounds.max.z);
+
+                agent.AttackWall(new Vector3(xPos, prisonnerZone.transform.position.y, zPos));
+            }
+
         }
 
-        if(health == 0)
+        if (health == 0)
         {
             Exit();
             if (transform.localEulerAngles.x > 270 || transform.localEulerAngles.x == 0.0f)
@@ -54,11 +59,11 @@ public class Wall : MonoBehaviour
                 Sequence sequence = DOTween.Sequence();
                 sequence.PrependInterval(1.0f);
                 sequence.Append(transform.DOMoveY(transform.position.y - 1.0f, 1.0f)).OnComplete(() => Destroy(this));
-                
+
             }
         }
     }
-    
+
     public void IncrementCountAgent()
     {
         countAgent++;
@@ -66,7 +71,7 @@ public class Wall : MonoBehaviour
 
     public void DecreaseHealth()
     {
-        if(health > 0)
+        if (health > 0)
         {
             health--;
         }
@@ -88,7 +93,7 @@ public class Wall : MonoBehaviour
                 float xPos = Random.Range(prisonnerCollider.bounds.min.x, prisonnerCollider.bounds.max.x);
                 float zPos = Random.Range(prisonnerCollider.bounds.min.z, prisonnerCollider.bounds.max.z);
 
-                while(!agent.SetAttackPosition(new Vector3(xPos, prisonnerZone.transform.position.y, zPos)));
+                while (!agent.SetAttackPosition(new Vector3(xPos, prisonnerZone.transform.position.y, zPos))) ;
             }
         }
     }
