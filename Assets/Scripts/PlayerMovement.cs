@@ -30,7 +30,6 @@ public class PlayerMovement : MonoBehaviour
         Recruit();
     }
 
-    
     private void Recruit()
     {
         if (Input.GetKeyDown(KeyCode.Space))
@@ -75,7 +74,7 @@ public class PlayerMovement : MonoBehaviour
 
             moveDirection.Normalize();
 
-            rigidbody.velocity = moveDirection * flockingManager.speed;
+            rigidbody.velocity = moveDirection * flockingManager.playerSpeed;
 
             // transform.DOMove(transform.position + moveDirection, 1 / flockingManager.speed);
            // flockingManager.ResetDestination();

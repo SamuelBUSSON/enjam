@@ -14,9 +14,7 @@ public class FlockingAgent : MonoBehaviour
         followPlayer
     }
 
-
-    public float size = 1.0f;     
-
+    public float size = 1.0f;    
 
     private FlockingManager flockingManager;
     private FlockingAgent neighborsSelected;
@@ -30,6 +28,11 @@ public class FlockingAgent : MonoBehaviour
     private bool isDestinationReach = false;
     private Action currentAction = Action.followPlayer;
 
+    private bool onceWall = false;
+    private GameObject wallTarget;
+    private bool canBreakTheWall = false;
+    private Vector3 basePosition;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,6 +43,8 @@ public class FlockingAgent : MonoBehaviour
         rigidbody = GetComponent<Rigidbody>();
 
         player = GameObject.FindGameObjectWithTag("Player");
+
+        basePosition = new Vector3();
     }
 
     // Update is called once per frame
@@ -50,11 +55,13 @@ public class FlockingAgent : MonoBehaviour
             switch (currentAction)
             {
                 case Action.followPlayer:
+                    GetComponent<Collider>().enabled = true;
                     Follow();
                     break;
 
                 case Action.destroyWall:
                     DestroyWall();
+                    GetComponent<Collider>().enabled = false;
                     break;
             }
         }
@@ -81,8 +88,19 @@ public class FlockingAgent : MonoBehaviour
 
     public void DestroyWall()
     {
-        GetPosNearPlayer();
-        
+        if (!onceWall)
+        {
+            navMeshAgent.SetDestination(GetPosNearPlayerForAttack());
+            onceWall = true;
+        }
+        else
+        {
+            if(navMeshAgent.remainingDistance <= 0.1f)
+            {
+                basePosition = transform.position;
+                canBreakTheWall = true;
+            }
+        }
     }
 
 
@@ -128,11 +146,46 @@ public class FlockingAgent : MonoBehaviour
         float offset = 2.0f;
 
         return new Vector3(Random.Range(posPlayer.x - numberOfAgentsInCrew * offset, posPlayer.x + numberOfAgentsInCrew * offset), 0, Random.Range(posPlayer.z - numberOfAgentsInCrew * offset, posPlayer.z + numberOfAgentsInCrew * offset));
+    }
+
+    private Vector3 GetPosNearPlayerForAttack()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        Vector3 posPlayer = player.transform.position;
+        int numberOfAgentsInCrew = flockingManager.GetNumberOfAgentsAttack();
+        float offset = 2.0f;
+
+        return new Vector3(Random.Range(posPlayer.x - numberOfAgentsInCrew * offset, posPlayer.x + numberOfAgentsInCrew * offset), 0, Random.Range(posPlayer.z - numberOfAgentsInCrew * offset, posPlayer.z + numberOfAgentsInCrew * offset));
+    }
+
+    public void AttackWall()
+    {
+        Collider wallCollider = wallTarget.GetComponent<Collider>();
+        
+        float xPos = Random.Range(wallCollider.bounds.min.x, wallCollider.bounds.max.x);
+        float yPos = Random.Range(transform.position.y, transform.position.y + 1.0f);
+        float zPos = Random.Range(wallCollider.bounds.min.z, wallCollider.bounds.max.z);
+
+        Sequence attackSequence = DOTween.Sequence();
+        attackSequence.Append(transform.DOJump(new Vector3(xPos, yPos, zPos), 0.0f, 1, 0.3f));
+        attackSequence.Append(transform.DOJump(basePosition, 2.0f, 1, 0.5f));
 
     }
 
-    public void SetAction()
-    {
 
+
+    public void SetTargetWall(GameObject wall)
+    {
+        wallTarget = wall;
+    }
+
+    public bool CanBreakTheWall()
+    {
+        return canBreakTheWall;
+    }
+
+    public void SetCanBreakTheWall(bool canBreak)
+    {
+        canBreakTheWall = canBreak;
     }
 }

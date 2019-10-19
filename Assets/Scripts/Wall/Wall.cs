@@ -4,37 +4,63 @@ using UnityEngine;
 
 public class Wall : MonoBehaviour
 {
-    public GameObject wallObject;
+    public float maxTimerAttack = 1.0f;
+    public float timerAttack = 0.0f;
+
 
     private FlockingManager flockingManager;
     private Collider wallCollider;
+
+    private Transform player;    
 
     private void Start()
     {
         flockingManager = FlockingManager.instance;
         wallCollider = GetComponent<Collider>();
-
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void Update()
     {
-        if (other.CompareTag("Player"))
+        if(player != null)
         {
+            timerAttack += Time.deltaTime;
+            if(timerAttack >= maxTimerAttack)
+            {
+                flockingManager.GetRandomAttackAgent()?.AttackWall();
+                timerAttack = 0.0f;
+                maxTimerAttack = Random.Range(0.1f, 0.4f);
+            }
+        }
+    }
+    
+
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.CompareTag("Player"))
+        {
+            player = collision.collider.transform;
+
             foreach (FlockingAgent agent in flockingManager.GetAgentsInCrew())
             {
                 agent.SetAction(FlockingAgent.Action.destroyWall);
+                agent.SetTargetWall(gameObject);
             }
         }
-
-        Random.Range(wallCollider.bounds.min.x, wallCollider.bounds.max.x);
-        Random.Range(wallCollider.bounds.min.z, wallCollider.bounds.max.z);
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnCollisionExit(Collision collision)
     {
-        if (other.CompareTag("Player"))
+        if (collision.collider.CompareTag("Player"))
         {
-            Debug.Log("Out");
+            foreach (FlockingAgent agent in flockingManager.GetAgentsInCrew())
+            {
+                agent.SetAction(FlockingAgent.Action.followPlayer);
+                agent.SetTargetWall(null);
+                agent.SetCanBreakTheWall(false);
+            }
+
+            player = null;
         }
     }
 }
