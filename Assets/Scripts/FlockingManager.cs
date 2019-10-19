@@ -35,25 +35,33 @@ public class FlockingManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         agents = new List<FlockingAgent>();
-    }
-    
-
-    // Update is called once per frame
-    void Update()
-    {
-        Vector3 theCenter = Vector3.zero;
-        
-        foreach (FlockingAgent boid in agents)
-        {
-            theCenter = theCenter + boid.transform.localPosition;
-        }
-
-        flockCenter = theCenter / (agents.Count);
-    }
+    }   
 
     public List<FlockingAgent> GetAgents()
     {
         return agents;
+    }
+    public List<FlockingAgent> GetAgentsInCrew()
+    {
+        List<FlockingAgent> agentsInCrew = new List<FlockingAgent>();
+
+        foreach (FlockingAgent agent in agents)
+        {
+            if (agent.IsInCrew())
+            {
+                agentsInCrew.Add(agent);
+            }
+        }
+
+        return agentsInCrew;
+    }
+
+    public void ResetDestination()
+    {
+        foreach (FlockingAgent agent in agents)
+        {
+            agent.SetDestinationReach(false);
+        }
     }
 
     public FlockingAgent GetAgent(int index)
@@ -84,6 +92,7 @@ public class FlockingManager : MonoBehaviour
         {
             Physics.IgnoreCollision(agentToAdd.GetComponent<Collider>(), agents[i].GetComponent<Collider>());
         }
+
         agents.Add(agentToAdd);
     }
 

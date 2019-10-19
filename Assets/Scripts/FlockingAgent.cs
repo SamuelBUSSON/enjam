@@ -2,40 +2,44 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.AI;
+
 
 public class FlockingAgent : MonoBehaviour
 {
 
-    public float rangeRecruit = 5.0f;
+    public enum Action
+    {
+        destroyWall,
+        followPlayer
+    }
 
-    public float size = 1.0f;
 
-    public bool isPlayer = false;
+    public float size = 1.0f;     
+
 
     private FlockingManager flockingManager;
     private FlockingAgent neighborsSelected;
-    private Vector3 offsetNeighbors;
+    private NavMeshAgent navMeshAgent;
+    private Rigidbody rigidbody;
 
-    private float timerJump;
-    private float maxTimerJump;
+    private GameObject player;    
 
     private bool isInCrew = false;
+
+    private bool isDestinationReach = false;
+    private Action currentAction = Action.followPlayer;
 
     // Start is called before the first frame update
     void Start()
     {
         flockingManager = FlockingManager.instance;
-        flockingManager.AddAgents(this);
-       
-        if (isPlayer)
-        {
-            isInCrew = true;
-        }
-        else
-        {
-            maxTimerJump = Random.Range(0.5f, 2.5f);
-        }
+        flockingManager.AddAgents(this);       
 
+        navMeshAgent = GetComponent<NavMeshAgent>();
+        rigidbody = GetComponent<Rigidbody>();
+
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
@@ -43,17 +47,16 @@ public class FlockingAgent : MonoBehaviour
     {
         if (isInCrew)
         {
-            if (isPlayer)
+            switch (currentAction)
             {
-                Recruit();
-            }
-            Move();
-        }
+                case Action.followPlayer:
+                    Follow();
+                    break;
 
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            Sequence searchSequence = DOTween.Sequence();
-            searchSequence.Append(transform.DOJump(transform.position, 3.0f, 1, 1.0f));
+                case Action.destroyWall:
+                    DestroyWall();
+                    break;
+            }
         }
     }
 
@@ -69,127 +72,67 @@ public class FlockingAgent : MonoBehaviour
 
             neighborsSelected = neighFa;
 
-            while(!flockingManager.CheckPosition(neighborsSelected.transform.position + offsetNeighbors))
-            {
-                offsetNeighbors = new Vector3(Random.Range(-flockingManager.offsetLength, flockingManager.offsetLength), 0, Random.Range(-flockingManager.offsetLength, flockingManager.offsetLength));
-            }
-
-            Sequence searchSequence = DOTween.Sequence();
-            searchSequence.Append(transform.DOMove(neighborsSelected.transform.position + offsetNeighbors, 1.0f)).OnComplete(() => SetIsInCrew(true));
+           // Sequence searchSequence = DOTween.Sequence();
+           // searchSequence.Append(transform.DOMove(neighborsSelected.transform.position + offsetNeighbors, 1.0f)).OnComplete(() => SetIsInCrew(true));
         }
+
+        isInCrew = true;
+    }    
+
+    public void DestroyWall()
+    {
+        GetPosNearPlayer();
+        
+    }
+
+
+    public void SetAction(Action type)
+    {
+        currentAction = type;
     }
     
-    public void SetIsInCrew(bool crew)
-    {
-        isInCrew = crew;
-    }
-
-    public IEnumerator JoinCrewMove()
-    {
-        float time = 1.0f;
-
-        transform.DOMove(neighborsSelected.transform.position + offsetNeighbors, time);
-        yield return new WaitForSeconds(time);
-    }
     
     public FlockingAgent GetNeighbor()
     {
         return neighborsSelected;
     }
-
-    private void Recruit()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            for (int i = 0; i < FlockingManager.instance.GetNumberOfAgents(); i++)
-            {
-                FlockingAgent fa = FlockingManager.instance.GetAgent(i);
-
-                if (!fa.IsInCrew())
-                {
-                    if (Vector3.Distance(fa.transform.position, transform.position) <= rangeRecruit)
-                    {
-                        fa.JoinCrew();
-                    }
-                }
-            }
-        }
-    }
-
-    private void Move()
-    {
-        Vector3 moveDirection = new Vector3(0, 0, 0);
-
-        if (Input.anyKey)
-        {
-            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Z))
-            {
-                moveDirection.z += 1.0f;
-            }
-            if (Input.GetKey(KeyCode.S))
-            {
-                moveDirection.z -= 1.0f;
-            }
-            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.Q))
-            {
-                moveDirection.x -= 1.0f;
-            }
-            if (Input.GetKey(KeyCode.D))
-            {
-                moveDirection.x += 1.0f;
-            }
-
-            moveDirection.Normalize();
-
-            transform.DOMove(transform.position + moveDirection, 1 / flockingManager.speed);
-        }
-    }
+    
 
     public bool IsInCrew()
     {
         return isInCrew;
     }
 
-
-    /*
-    public void Separation()
+    private void Follow()
     {
-        Vector3 separationForce = new Vector3(0, 0, 0);
-
-        for (int i = 0; i < flockingManager.GetAgents().Count; i++)
+        if (Vector3.Distance(transform.position, player.transform.position) >= 5000.0f)
         {
-
-            if(flockingManager.GetAgent(i) != this)
-            {
-                Vector3 toAgent = transform.position - flockingManager.GetAgent(i).transform.position;
-                separationForce += toAgent.normalized / toAgent.magnitude;
-            }
+            navMeshAgent.SetDestination(GetPosNearPlayer());
         }
-
-        transform.position += separationForce / flockingManager.separationPower;
+        else
+        {
+            navMeshAgent.SetDestination(player.transform.position);
+        }
     }
 
-    public void Cohesion()
+    public void SetDestinationReach(bool new_destination)
     {
-        Vector3 cohesionForce = new Vector3(0, 0, 0);
-        Vector3 centerOfMass = new Vector3(0, 0, 0);
+        isDestinationReach = new_destination;
+    }
 
-        int neighborCount = 0;
+    private Vector3 GetPosNearPlayer()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        Vector3 posPlayer = player.transform.position;
+        int numberOfAgentsInCrew = flockingManager.GetNumberOfAgentsInCrew();
+        float offset = 2.0f;
 
-        for (int i = 0; i < flockingManager.GetAgents().Count; i++)
-        {
-            if (flockingManager.GetAgent(i) != this)
-            {
-                centerOfMass += flockingManager.GetAgent(i).transform.position;
-                neighborCount++;
-            }
-        }
+        return new Vector3(Random.Range(posPlayer.x - numberOfAgentsInCrew * offset, posPlayer.x + numberOfAgentsInCrew * offset), 0, Random.Range(posPlayer.z - numberOfAgentsInCrew * offset, posPlayer.z + numberOfAgentsInCrew * offset));
 
-        if(neighborCount > 0)
-        {
-            centerOfMass /= neighborCount;
-        }
+    }
 
-        transform.position += centerOfMass;
-    }*/
+    public void SetAction()
+    {
+
+    }
 }
