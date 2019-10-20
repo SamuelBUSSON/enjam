@@ -49,9 +49,7 @@ public class Wall : MonoBehaviour
     {
         flockingManager = FlockingManager.instance;
         wallCollider = GetComponent<Collider>();
-        basePositionAngle = new Vector3(transform.position.x, GetComponent<Collider>().bounds.min.y, transform.position.z);
-
-        Debug.Log(basePositionAngle);
+        basePositionAngle = new Vector3(transform.position.x, GetComponent<Collider>().bounds.min.y, transform.position.z);        
 
         baseAngle = transform.eulerAngles.y;
 
@@ -125,7 +123,10 @@ public class Wall : MonoBehaviour
 
             if (shakeTheWall && health == maxHealth)
             {
-                GetComponent<Outline>().enabled = true;
+                if (GetComponent<Outline>())
+                {
+                    GetComponent<Outline>().enabled = true;
+                }
 
                 if (shakeComplete)
                 {
@@ -137,8 +138,10 @@ public class Wall : MonoBehaviour
             }
             else
             {
-
-                GetComponent<Outline>().enabled = false;
+                if (GetComponent<Outline>())
+                {
+                    GetComponent<Outline>().enabled = false;
+                }
             }
         }
     }

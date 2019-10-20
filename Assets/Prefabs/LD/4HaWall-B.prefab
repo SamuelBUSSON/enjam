@@ -1853,8 +1853,6 @@ GameObject:
   - component: {fileID: 8281996823620830471}
   - component: {fileID: 8281996823620830470}
   - component: {fileID: 1229802792061756907}
-  - component: {fileID: 3645450672069202133}
-  - component: {fileID: 6186138114716042043}
   m_Layer: 0
   m_Name: 4HaWall-B
   m_TagString: Untagged
@@ -1976,38 +1974,6 @@ MonoBehaviour:
   prisonnerZone: {fileID: 2501411287810258915}
   prisonnerZone2: {fileID: 4934684323009891631}
   reverseAngle: 0
---- !u!54 &3645450672069202133
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8281996823620830473}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 126
-  m_CollisionDetection: 0
---- !u!208 &6186138114716042043
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8281996823620830473}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0, z: 0}
-  m_TimeToStationary: 0.5
 --- !u!1 &8525425335401840490
 GameObject:
   m_ObjectHideFlags: 0
