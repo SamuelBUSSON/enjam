@@ -70,6 +70,8 @@ public class BoomBox : MonoBehaviour
     {
         sliderVolume.value = GetPercentVolume();
         triggerZone.radius = Mathf.Lerp(minRange, maxRange, GetPercentVolume());
+
+        AkSoundEngine.SetRTPCValue("volume", currentVolume);
     }
 
     private void OnTriggerEnter(Collider other)

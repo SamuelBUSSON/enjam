@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using cakeslice;
 
 public class Wall : MonoBehaviour
 {
@@ -55,6 +56,7 @@ public class Wall : MonoBehaviour
         basePositon = transform.position;
 
         maxHealth = health;
+        
     }
 
     private void Update()
@@ -106,13 +108,20 @@ public class Wall : MonoBehaviour
 
             if (shakeTheWall && health == maxHealth)
             {
+                GetComponent<Outline>().enabled = true;
+
                 if (shakeComplete)
                 {
-                    shakeComplete = false;
+                    shakeComplete = false;                    
 
                     Sequence moveSequence = DOTween.Sequence();
                     moveSequence.Append(transform.DOJump(basePositon, 0.5f, 3, 0.8f)).OnComplete(() => shakeComplete = true);
                 }
+            }
+            else
+            {
+
+                GetComponent<Outline>().enabled = false;
             }
         }
     }

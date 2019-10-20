@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using DG.Tweening;
-
-
+using UnityEngine.SceneManagement;
+using AK.Wwise;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -38,8 +38,9 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         Move();
-        Recruit();
+        Recruit();        
     }
+    
 
     private void Recruit()
     {
@@ -64,7 +65,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector3 moveDirection = new Vector3(0, 0, 0);
 
-        if (Input.anyKey)
+        if (Input.anyKey && rigidbody.velocity.y >= -0.1f)
         {
 
             if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Z))

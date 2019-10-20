@@ -25,6 +25,7 @@ public class DetectPlayer : MonoBehaviour
 
     private Transform firstAgent;
     
+    // TODO :: Ne pas retrecir la zone quand quelqu'un est dedans
 
     // Start is called before the first frame update
     void Start()
