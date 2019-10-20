@@ -11,7 +11,8 @@ public class FlockingAgent : MonoBehaviour
     public enum Action
     {
         destroyWall,
-        followPlayer
+        followPlayer,
+        captured
     }
 
     public float size = 1.0f;
@@ -43,6 +44,8 @@ public class FlockingAgent : MonoBehaviour
 
     private bool onceIncrement = false;
 
+    private Vector3 basePostion;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -55,6 +58,9 @@ public class FlockingAgent : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
 
         basePositionAttack = new Vector3();
+
+        basePostion = new Vector3();
+        basePostion = transform.position;
 
         animator = GetComponentInChildren<Animator>();        
 
@@ -77,7 +83,22 @@ public class FlockingAgent : MonoBehaviour
                 case Action.destroyWall:
                     DestroyWall();
                     break;
+
+                case Action.captured:
+                    GoBackToCell();
+                    break;
             }            
+        }
+    }
+
+    public void GoBackToCell()
+    {
+        if(navMeshAgent.remainingDistance <= 1.0f)
+        {
+            isInCrew = false;
+            animator.SetBool("IsIdle", true);
+            animator.SetBool("IsDancing", false);
+            ResetCarac();
         }
     }
 
@@ -92,16 +113,9 @@ public class FlockingAgent : MonoBehaviour
 
     public void JoinCrew()
     {
-        if (flockingManager.GetNumberOfAgentsInCrew() > 0)
-        {
-            FlockingAgent neighFa = flockingManager.GetRandomAgentInCrew();
-            while (neighFa.GetNeighbor() == this)
-            {
-                neighFa = flockingManager.GetRandomAgentInCrew();
-            }
-            neighborsSelected = neighFa;
-        }
         isInCrew = true;
+
+        SetAction(Action.followPlayer);
 
         animator.SetBool("IsIdle", false);
         animator.SetBool("IsDancing", true);
@@ -127,12 +141,16 @@ public class FlockingAgent : MonoBehaviour
             }
         }
     }
-    
 
 
     public void SetAction(Action type)
     {
         currentAction = type;
+
+        if(type == Action.captured)
+        {
+            navMeshAgent.SetDestination(basePostion);
+        }
     }
     
     

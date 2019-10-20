@@ -31,8 +31,7 @@ public class PlayerMovement : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
         forwardVector = new Vector3(0,0,0);
         forwardVector = transform.forward;
-
-
+        
     }
 
     // Update is called once per frame

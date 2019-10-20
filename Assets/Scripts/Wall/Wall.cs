@@ -13,6 +13,14 @@ public class Wall : MonoBehaviour
 
     [Header("Prisonner placement Zone")]
     public Transform prisonnerZone;
+    public Transform prisonnerZone2;
+
+    [HideInInspector()]
+    public bool reverseAngle = false;    
+
+    private Transform closestPrisonnerZone;
+
+    private float maxHealth;
 
     private FlockingManager flockingManager;
     private Collider wallCollider;
@@ -22,50 +30,98 @@ public class Wall : MonoBehaviour
     private bool deathEffectOnce = false;
     private Vector3 basePositionAngle;
 
+    private Vector3 basePositon;
+    private bool shakeComplete = true;
+
+    private float angleCount;
+
+    private float baseAngle;
+    private bool over = false;
+
+    private bool shakeTheWall = false;
+
+
     private void Start()
     {
         flockingManager = FlockingManager.instance;
         wallCollider = GetComponent<Collider>();
         basePositionAngle = new Vector3(transform.position.x, GetComponent<Collider>().bounds.min.y, transform.position.z);
+
+        Debug.Log(basePositionAngle);
+
+        baseAngle = transform.eulerAngles.y;
+
+        basePositon = new Vector3();
+        basePositon = transform.position;
+
+        maxHealth = health;
     }
 
     private void Update()
     {
-        if (player != null)
+        if (!over)
         {
-            if (flockingManager.GetNumberOfAgentsInCrew() >= numberOfAgentsNeedToBreak)
+            if (player != null)
             {
-                foreach (FlockingAgent agent in flockingManager.GetAgentsInCrew())
+                if (flockingManager.GetNumberOfAgentsInCrew() >= numberOfAgentsNeedToBreak)
                 {
-                    agent.SetAction(FlockingAgent.Action.destroyWall);
-                    agent.SetTargetWall(gameObject);
+                    foreach (FlockingAgent agent in flockingManager.GetAgentsInCrew())
+                    {
+                        agent.SetAction(FlockingAgent.Action.destroyWall);
+                        agent.SetTargetWall(gameObject);
 
-                    Collider prisonnerCollider = prisonnerZone.GetComponent<Collider>();
+                        Collider prisonnerCollider = closestPrisonnerZone.GetComponent<Collider>();
 
-                    float xPos = Random.Range(prisonnerCollider.bounds.min.x, prisonnerCollider.bounds.max.x);
-                    float zPos = Random.Range(prisonnerCollider.bounds.min.z, prisonnerCollider.bounds.max.z);
+                        float xPos = Random.Range(prisonnerCollider.bounds.min.x, prisonnerCollider.bounds.max.x);
+                        float zPos = Random.Range(prisonnerCollider.bounds.min.z, prisonnerCollider.bounds.max.z);
 
-                    agent.AttackWall(new Vector3(xPos, prisonnerZone.transform.position.y, zPos));                    
+                        agent.AttackWall(new Vector3(xPos, closestPrisonnerZone.transform.position.y, zPos));
+                    }
+                }
+            }
+
+            if (health == 0)
+            {
+                player = null;
+                Exit();
+                GetComponent<Collider>().enabled = false;
+                angleCount += angleSpeed;              
+                
+                if (angleCount <= 90f && angleCount >= -90f)
+                {
+                    if (baseAngle != 0)
+                    {
+                        transform.RotateAround(basePositionAngle, Quaternion.AngleAxis(baseAngle, Vector3.up) * Vector3.left, reverseAngle ? -angleSpeed : angleSpeed);
+                    }
+                    else
+                    {
+                        transform.RotateAround(basePositionAngle, Vector3.left, reverseAngle ? -angleSpeed : angleSpeed);
+                    }
+                }
+                else
+                {
+                    over = true;
+                }
+            }
+
+            if (shakeTheWall && health == maxHealth)
+            {
+                if (shakeComplete)
+                {
+                    shakeComplete = false;
+
+                    Sequence moveSequence = DOTween.Sequence();
+                    moveSequence.Append(transform.DOJump(basePositon, 0.5f, 3, 0.8f)).OnComplete(() => shakeComplete = true);
                 }
             }
         }
+    }
 
-        if (health == 0)
+    public void SetShakeTheWall(bool new_shake)
+    {
+        if(flockingManager.GetNumberOfAgentsInCrew() >= numberOfAgentsNeedToBreak)
         {
-            player = null;
-            Vector3 toTarget = (GameObject.FindGameObjectWithTag("Player").transform.position - transform.position).normalized;
-            angleSpeed = Vector3.Dot(toTarget, transform.forward) > 0 ? angleSpeed : -angleSpeed;
-
-            Exit();
-            if (transform.localEulerAngles.x > 270 || transform.localEulerAngles.x == 0.0f)
-            {
-                transform.RotateAround(basePositionAngle, Vector3.left, angleSpeed);
-            }
-            else
-            {
-                GetComponent<Collider>().enabled = false;
-
-            }
+            shakeTheWall = new_shake;
         }
     }
 
@@ -88,6 +144,11 @@ public class Wall : MonoBehaviour
         {
             player = collision.collider.transform;
         }
+    }
+
+    public void SetClosestZone(Transform t)
+    {
+        closestPrisonnerZone = t;
     }
 
     private void OnCollisionExit(Collision collision)
