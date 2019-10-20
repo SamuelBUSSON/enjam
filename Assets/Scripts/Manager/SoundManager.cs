@@ -28,7 +28,7 @@ public class SoundManager : MonoBehaviour
             }
         }
         //Sets this to not be destroyed when reloading scene
-        DontDestroyOnLoad(gameObject);        
+      //  DontDestroyOnLoad(gameObject);        
     }
 
     public void SetCurrentVolume(float newVol)

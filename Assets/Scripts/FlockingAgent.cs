@@ -53,7 +53,7 @@ public class FlockingAgent : MonoBehaviour
     void Start()
     {
         flockingManager = FlockingManager.instance;
-        flockingManager.AddAgents(this);
+        flockingManager.AddAgents(this);       
 
         navMeshAgent = GetComponent<NavMeshAgent>();
         rigidbody = GetComponent<Rigidbody>();

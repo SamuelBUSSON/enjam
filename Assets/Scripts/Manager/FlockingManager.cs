@@ -32,7 +32,7 @@ public class FlockingManager : MonoBehaviour
             }
         }
         //Sets this to not be destroyed when reloading scene
-        DontDestroyOnLoad(gameObject);
+       // DontDestroyOnLoad(gameObject);
 
         agents = new List<FlockingAgent>();
     }   
