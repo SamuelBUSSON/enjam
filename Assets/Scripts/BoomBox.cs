@@ -48,25 +48,6 @@ public class BoomBox : MonoBehaviour
                 IncreaseVolume();
             }
         }
-
-        timerParty += Time.deltaTime;
-
-        if(timerParty >= maxTimerParty)
-        {
-            if (currentVolume >= 60 && FlockingManager.instance.GetNumberOfAgentsInCrew() > 1)
-            {
-                idPartySound = AkSoundEngine.PostEvent("Prisoniers_happy_voice_in_party", gameObject);
-            }
-            else
-            {
-                AkSoundEngine.StopPlayingID(idPartySound);
-                idPartySound = 0;
-            }
-            timerParty = 0.0f;
-        }
-
-
-
     }
 
     public float GetPercentVolume()

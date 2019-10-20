@@ -79,17 +79,19 @@ public class DetectPlayer : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<FlockingAgent>())
-        {            
-            DetectEntity(other);
+        {
 
-           
-
-            if (agentInZone.Count == 0)
+            if (other.GetComponent<FlockingAgent>().IsInCrew())
             {
-                firstAgent = other.transform;
+                DetectEntity(other);
+
+                if (agentInZone.Count == 0)
+                {
+                    firstAgent = other.transform;
+                }
+
+                agentInZone.Add(other.GetComponent<FlockingAgent>());
             }
-            
-            agentInZone.Add(other.GetComponent<FlockingAgent>());
         }
 
         if (other.CompareTag("Player"))

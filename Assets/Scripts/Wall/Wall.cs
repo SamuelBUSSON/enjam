@@ -177,6 +177,11 @@ public class Wall : MonoBehaviour
         }
     }
 
+    public float GetMaxHealth()
+    {
+        return maxHealth;
+    }
+
     public void SetClosestZone(Transform t)
     {
         closestPrisonnerZone = t;

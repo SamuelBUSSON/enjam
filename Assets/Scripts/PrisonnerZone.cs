@@ -10,7 +10,7 @@ public class PrisonnerZone : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && attachWall.health == attachWall.GetMaxHealth())
         {
             if (reverseAngle)
             {

@@ -138,6 +138,8 @@ public class FlockingAgent : MonoBehaviour
         animator.SetBool("IsIdle", false);
 
         player.GetComponentInChildren<BoomBox>().UpdateVal();
+
+        AkSoundEngine.PostEvent("Prisoniers_happy_voice_in_party", gameObject);
     }    
 
     public void DestroyWall()
