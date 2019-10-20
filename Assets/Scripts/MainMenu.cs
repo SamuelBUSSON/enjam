@@ -12,7 +12,7 @@ public class MainMenu : MonoBehaviour
 
     public void PlayTutorial()
     {
-        SceneManager.LoadScene("SceneTutorial");
+        SceneManager.LoadScene("TutorialScene");
     }
 
     public void goCredits()

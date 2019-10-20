@@ -184,24 +184,15 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: 91a4ed931c0ce142ae1827d99853b99a
     GuidInternal: 
-    m_lastTime: -8586300331634775808
+    m_lastTime: -8586300331653795994
     List: []
   BankWwu:
   - PhysicalPath: SoundBanks\Default Work Unit.wwu
     ParentPhysicalPath: 
     guid: 27dc000cc4bf2b45876003cf235e4b78
     GuidInternal: 
-    m_lastTime: -8586300134194775808
+    m_lastTime: -8586300361354775808
     List:
-    - name: fx_prison_break_dance
-      guid: 6275c45b2095d84caf82915189520443
-      id: 2239641395
-      PathAndIcons:
-      - ElementName: Default Work Unit
-        ObjectType: 12
-      - ElementName: fx_prison_break_dance
-        ObjectType: 7
-      Path: Default Work Unit\fx_prison_break_dance
     - name: music_prison_breakdance
       guid: 9983a07b16e7f9448352fc6fab5c4a84
       id: 3781611917
@@ -216,56 +207,8 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: a851727b99a22e468d9b706c7fe30dc9
     GuidInternal: 
-    m_lastTime: -8586300125828610588
+    m_lastTime: -8586300331233527298
     List:
-    - name: Big_door_destruction
-      guid: 4150ff46160ccb429e5cdaf386a92cab
-      id: 3796899585
-      PathAndIcons:
-      - ElementName: Default Work Unit
-        ObjectType: 12
-      - ElementName: Big_door_destruction
-        ObjectType: 3
-      Path: Default Work Unit\Big_door_destruction
-      maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
-    - name: Game_over
-      guid: 5d2ecb758255d640ab7cee9ee1f92480
-      id: 1432716332
-      PathAndIcons:
-      - ElementName: Default Work Unit
-        ObjectType: 12
-      - ElementName: Game_over
-        ObjectType: 3
-      Path: Default Work Unit\Game_over
-      maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
-    - name: Guardian_interpelation_voice
-      guid: df1910851aa99842aa4f11bf34817192
-      id: 2058331390
-      PathAndIcons:
-      - ElementName: Default Work Unit
-        ObjectType: 12
-      - ElementName: Guardian_interpelation_voice
-        ObjectType: 3
-      Path: Default Work Unit\Guardian_interpelation_voice
-      maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
-    - name: Guardian_suspicion_voice
-      guid: f959dc05d66a2a4fbd9f67c7a06f5859
-      id: 2419883523
-      PathAndIcons:
-      - ElementName: Default Work Unit
-        ObjectType: 12
-      - ElementName: Guardian_suspicion_voice
-        ObjectType: 3
-      Path: Default Work Unit\Guardian_suspicion_voice
-      maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
     - name: Play_music_game_idle
       guid: 7229765791fe5a44b6c48ddb5d121189
       id: 3569257109
@@ -302,72 +245,15 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
-    - name: Prisoniers_happy_voice_in_party
-      guid: 607dca74911eda43b92b4452900ee32f
-      id: 3529129042
-      PathAndIcons:
-      - ElementName: Default Work Unit
-        ObjectType: 12
-      - ElementName: Prisoniers_happy_voice_in_party
-        ObjectType: 3
-      Path: Default Work Unit\Prisoniers_happy_voice_in_party
-      maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
-    - name: Prisoniers_jump_in_party
-      guid: d2c5a19f57fe404fa8fa794b6e2e59dd
-      id: 905402865
-      PathAndIcons:
-      - ElementName: Default Work Unit
-        ObjectType: 12
-      - ElementName: Prisoniers_jump_in_party
-        ObjectType: 3
-      Path: Default Work Unit\Prisoniers_jump_in_party
-      maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
-    - name: Punch_to_wall
-      guid: 006c888a55280545aebad6e0151a3b87
-      id: 1844306524
-      PathAndIcons:
-      - ElementName: Default Work Unit
-        ObjectType: 12
-      - ElementName: Punch_to_wall
-        ObjectType: 3
-      Path: Default Work Unit\Punch_to_wall
-      maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
-    - name: Wall_destruction
-      guid: da5a1cda8d0b8b4c8cb06c2be5b67bce
-      id: 264534872
-      PathAndIcons:
-      - ElementName: Default Work Unit
-        ObjectType: 12
-      - ElementName: Wall_destruction
-        ObjectType: 3
-      Path: Default Work Unit\Wall_destruction
-      maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
   RtpcWwu:
   - PhysicalPath: Game Parameters\Default Work Unit.wwu
     ParentPhysicalPath: 
     guid: 02708eefffb99e4c93f817ce177f14bc
     GuidInternal: 
-    m_lastTime: -8586300136834775808
+    m_lastTime: -8586300188428447684
     List:
-    - name: volume
-      guid: 6640ad07f004e4408680b54b1c7c2656
-      id: 2415836739
-      PathAndIcons:
-      - ElementName: Default Work Unit
-        ObjectType: 12
-      - ElementName: volume
-        ObjectType: 13
-      Path: Default Work Unit\volume
     - name: volume_idle
-      guid: 24114e2451f858409ad352c599627945
+      guid: bcd874ee5ad0994e89980d0dda6e958c
       id: 1267577004
       PathAndIcons:
       - ElementName: Default Work Unit
@@ -376,7 +262,7 @@ MonoBehaviour:
         ObjectType: 13
       Path: Default Work Unit\volume_idle
     - name: volume_party
-      guid: f5dd48325e8aba4aafac226863a4894e
+      guid: 6640ad07f004e4408680b54b1c7c2656
       id: 3589652074
       PathAndIcons:
       - ElementName: Default Work Unit
@@ -546,6 +432,8 @@ MonoBehaviour:
     List: []
   ExpandedItems:
   - /Prison Break Dance
+  - /Prison Break Dance/Events
+  - /Prison Break Dance/Events/Default Work Unit
   - /Prison Break Dance/SoundBanks
   - /Prison Break Dance/SoundBanks/Default Work Unit
   autoPopulateEnabled: 1

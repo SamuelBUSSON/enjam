@@ -13,17 +13,9 @@ namespace AK
 {
     namespace EVENTS
     {
-        static const AkUniqueID BIG_DOOR_DESTRUCTION = 3796899585U;
-        static const AkUniqueID GAME_OVER = 1432716332U;
-        static const AkUniqueID GUARDIAN_INTERPELATION_VOICE = 2058331390U;
-        static const AkUniqueID GUARDIAN_SUSPICION_VOICE = 2419883523U;
         static const AkUniqueID PLAY_MUSIC_GAME_IDLE = 3569257109U;
         static const AkUniqueID PLAY_MUSIC_GAME_PARTY = 854648521U;
         static const AkUniqueID PLAY_MUSIC_MENU = 1699343283U;
-        static const AkUniqueID PRISONIERS_HAPPY_VOICE_IN_PARTY = 3529129042U;
-        static const AkUniqueID PRISONIERS_JUMP_IN_PARTY = 905402865U;
-        static const AkUniqueID PUNCH_TO_WALL = 1844306524U;
-        static const AkUniqueID WALL_DESTRUCTION = 264534872U;
     } // namespace EVENTS
 
     namespace STATES
@@ -53,7 +45,6 @@ namespace AK
         static const AkUniqueID SS_AIR_STORM = 3715662592U;
         static const AkUniqueID SS_AIR_TIMEOFDAY = 3203397129U;
         static const AkUniqueID SS_AIR_TURBULENCE = 4160247818U;
-        static const AkUniqueID VOLUME = 2415836739U;
         static const AkUniqueID VOLUME_IDLE = 1267577004U;
         static const AkUniqueID VOLUME_PARTY = 3589652074U;
     } // namespace GAME_PARAMETERS
@@ -61,7 +52,6 @@ namespace AK
     namespace BANKS
     {
         static const AkUniqueID INIT = 1355168291U;
-        static const AkUniqueID FX_PRISON_BREAK_DANCE = 2239641395U;
         static const AkUniqueID MUSIC_PRISON_BREAKDANCE = 3781611917U;
     } // namespace BANKS
 
