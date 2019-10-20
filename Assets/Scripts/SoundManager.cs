@@ -7,6 +7,7 @@ public class SoundManager : MonoBehaviour
 
     public static SoundManager instance;
 
+    private float currentVolume = 0.0f;
 
     public bool isMusicPlaying = false;
 
@@ -30,15 +31,13 @@ public class SoundManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);        
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public void SetCurrentVolume(float newVol)
     {
-        
+        currentVolume = newVol;
     }
 
-    // Update is called once per frame
-    void Update()
+    public float GetCurrentVolume()
     {
-        
+        return currentVolume;
     }
 }
