@@ -1,10 +1,14 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Assets/Coffee/UIExtensions/UIEffect/UIEffect_Demo.unitypackage.meta
 guid: f19f821c4c7ad4b629b11360fac9f22b
 <<<<<<< HEAD
 timeCreated: 1551703578
 licenseType: Pro
 DefaultImporter:
 =======
+=======
+guid: 1ccfe5c12264ebe4abe2e91b6ae54aff
+>>>>>>> master:Assets/Font.meta~HEAD_0.meta
 DefaultImporter:
   externalObjects: {}
 >>>>>>> master
