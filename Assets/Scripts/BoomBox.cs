@@ -68,7 +68,7 @@ public class BoomBox : MonoBehaviour
         UpdateVal();
     }
 
-    private void UpdateVal()
+    public void UpdateVal()
     {
         triggerZone.radius = Mathf.Lerp(minRange, maxRange, GetPercentVolume());
         AkSoundEngine.SetRTPCValue("volume_party", currentVolume);

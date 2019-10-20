@@ -136,7 +136,8 @@ public class FlockingAgent : MonoBehaviour
         SetAction(Action.followPlayer);
 
         animator.SetBool("IsIdle", false);
-        animator.SetBool("IsDancing", true);
+
+        player.GetComponentInChildren<BoomBox>().UpdateVal();
     }    
 
     public void DestroyWall()

@@ -11,6 +11,8 @@ public class DetectPlayer : MonoBehaviour
 
     public float timerToGetCaptured = 3.0f;
 
+    public Light spotLigh;
+
     private float timer;
 
     private float currentSoundRange;
@@ -41,11 +43,11 @@ public class DetectPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(agentInZone.Count != 0)
-        {
-            currentSoundRange = Mathf.Lerp(minSoundRange, maxSoundRange, player.GetComponentInChildren<BoomBox>().GetPercentVolume());
-            triggerZone.radius = currentSoundRange;
-        }
+
+        currentSoundRange = Mathf.Lerp(minSoundRange, maxSoundRange, player.GetComponentInChildren<BoomBox>().GetPercentVolume());
+        triggerZone.radius = currentSoundRange;
+        spotLigh.spotAngle = Mathf.Lerp(25, 120, player.GetComponentInChildren<BoomBox>().GetPercentVolume());
+        
 
         if (firstAgent)
         {
