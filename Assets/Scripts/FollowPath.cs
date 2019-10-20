@@ -24,12 +24,13 @@ public class FollowPath : MonoBehaviour
     {
         if(navMeshAgent.remainingDistance == 0)
         {
+            navMeshAgent.SetDestination(nodes[currentIndex].position);
             currentIndex++;
-            if(currentIndex == nodes.Length)
+
+            if (currentIndex == nodes.Length)
             {
                 currentIndex = 0;
             }
-            navMeshAgent.SetDestination(nodes[currentIndex].position);
         }
     }
 }
