@@ -13,6 +13,12 @@ public class Wall : MonoBehaviour
 
     [Header("Prisonner placement Zone")]
     public Transform prisonnerZone;
+    public Transform prisonnerZone2;
+
+    [HideInInspector()]
+    public bool reverseAngle = false;
+
+    private Transform closestPrisonnerZone;
 
     private FlockingManager flockingManager;
     private Collider wallCollider;
@@ -22,11 +28,19 @@ public class Wall : MonoBehaviour
     private bool deathEffectOnce = false;
     private Vector3 basePositionAngle;
 
+    private float angleCount;
+
+    private float baseAngle;
+    private bool over = false;
+
+
     private void Start()
     {
         flockingManager = FlockingManager.instance;
         wallCollider = GetComponent<Collider>();
-        basePositionAngle = new Vector3(transform.position.x, GetComponent<Collider>().bounds.min.y, transform.position.z);
+        basePositionAngle = new Vector3((GetComponent<Collider>().bounds.min.x + GetComponent<Collider>().bounds.max.x) /2, GetComponent<Collider>().bounds.min.y, (GetComponent<Collider>().bounds.min.z + GetComponent<Collider>().bounds.max.z) / 2);
+
+        baseAngle = transform.eulerAngles.y;
     }
 
     private void Update()
@@ -40,31 +54,37 @@ public class Wall : MonoBehaviour
                     agent.SetAction(FlockingAgent.Action.destroyWall);
                     agent.SetTargetWall(gameObject);
 
-                    Collider prisonnerCollider = prisonnerZone.GetComponent<Collider>();
+                    Collider prisonnerCollider = closestPrisonnerZone.GetComponent<Collider>();
 
                     float xPos = Random.Range(prisonnerCollider.bounds.min.x, prisonnerCollider.bounds.max.x);
                     float zPos = Random.Range(prisonnerCollider.bounds.min.z, prisonnerCollider.bounds.max.z);
 
-                    agent.AttackWall(new Vector3(xPos, prisonnerZone.transform.position.y, zPos));                    
+                    agent.AttackWall(new Vector3(xPos, closestPrisonnerZone.transform.position.y, zPos));                    
                 }
             }
         }
 
-        if (health == 0)
+        if (health == 0 && !over)
         {
             player = null;
-            Vector3 toTarget = (GameObject.FindGameObjectWithTag("Player").transform.position - transform.position).normalized;
-            angleSpeed = Vector3.Dot(toTarget, transform.forward) > 0 ? angleSpeed : -angleSpeed;
-
             Exit();
-            if (transform.localEulerAngles.x > 270 || transform.localEulerAngles.x == 0.0f)
+            GetComponent<Collider>().enabled = false;
+            angleCount += angleSpeed;
+            Debug.Log(angleCount);
+            if (angleCount <= 90f && angleCount >= -90f)
             {
-                transform.RotateAround(basePositionAngle, Vector3.left, angleSpeed);
+                if(baseAngle != 0)
+                {
+                    transform.RotateAround(basePositionAngle, Quaternion.AngleAxis(baseAngle, Vector3.up) * Vector3.left, reverseAngle ? -angleSpeed : angleSpeed);
+                }
+                else
+                {
+                    transform.RotateAround(basePositionAngle, Vector3.left, reverseAngle ? -angleSpeed : angleSpeed);
+                }
             }
             else
             {
-                GetComponent<Collider>().enabled = false;
-
+                over = true;
             }
         }
     }
@@ -88,6 +108,11 @@ public class Wall : MonoBehaviour
         {
             player = collision.collider.transform;
         }
+    }
+
+    public void SetClosestZone(Transform t)
+    {
+        closestPrisonnerZone = t;
     }
 
     private void OnCollisionExit(Collision collision)
