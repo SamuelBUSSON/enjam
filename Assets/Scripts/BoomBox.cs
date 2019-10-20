@@ -71,9 +71,10 @@ public class BoomBox : MonoBehaviour
     private void UpdateVal()
     {
         triggerZone.radius = Mathf.Lerp(minRange, maxRange, GetPercentVolume());
-        AkSoundEngine.SetRTPCValue("volume", currentVolume);
+        AkSoundEngine.SetRTPCValue("volume_party", currentVolume);
+        AkSoundEngine.SetRTPCValue("volume_idle",  currentVolume);
 
-        if(GetPercentVolume() <= 0.3f)
+        if (GetPercentVolume() <= 0.3f)
         {
             animator.SetBool("IsHidding", true);
             animator.SetBool("IsDancing", false);

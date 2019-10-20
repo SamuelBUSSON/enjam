@@ -250,17 +250,26 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: 02708eefffb99e4c93f817ce177f14bc
     GuidInternal: 
-    m_lastTime: -8586300337469698926
+    m_lastTime: -8586300188428447684
     List:
-    - name: volume
-      guid: 6640ad07f004e4408680b54b1c7c2656
-      id: 2415836739
+    - name: volume_idle
+      guid: bcd874ee5ad0994e89980d0dda6e958c
+      id: 1267577004
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
-      - ElementName: volume
+      - ElementName: volume_idle
         ObjectType: 13
-      Path: Default Work Unit\volume
+      Path: Default Work Unit\volume_idle
+    - name: volume_party
+      guid: 6640ad07f004e4408680b54b1c7c2656
+      id: 3589652074
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: volume_party
+        ObjectType: 13
+      Path: Default Work Unit\volume_party
   - PhysicalPath: Game Parameters\Factory Motion.wwu
     ParentPhysicalPath: 
     guid: 225213d7dbd1d042adc0930743567776

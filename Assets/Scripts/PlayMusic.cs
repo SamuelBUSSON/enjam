@@ -22,6 +22,10 @@ public class PlayMusic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(player.GetComponentInChildren<BoomBox>().GetPercentVolume() >= 0.6f)
+        {
+          //  AkSoundEngine.StopPlayingID(idMusicIdle);
+        }
 
     }
 }
