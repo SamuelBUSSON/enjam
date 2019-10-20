@@ -59,8 +59,7 @@ public class Wall : MonoBehaviour
         maxHealth = health;
 
         numberOfAgentsNeedToBreak--;
-
-
+        
     }
 
     private void Update()
@@ -200,7 +199,7 @@ public class Wall : MonoBehaviour
             agent.SetTargetWall(null);
             agent.SetCanBreakTheWall(false);
         }
-        countAgent = 0;
-        
+        countAgent = 0;        
+        AkSoundEngine.StopPlayingID(punchToWallId);
     }
 }

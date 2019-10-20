@@ -22,12 +22,11 @@ public class FollowPath : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(navMeshAgent.remainingDistance == 0)
+        if(navMeshAgent.remainingDistance == 0 && nodes.Length != 0)
         {
             navMeshAgent.SetDestination(nodes[currentIndex].position);
             currentIndex++;
-
-            if (currentIndex == nodes.Length)
+            if (currentIndex == nodes.Length )
             {
                 currentIndex = 0;
             }

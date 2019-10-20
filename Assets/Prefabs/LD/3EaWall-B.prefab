@@ -1760,6 +1760,7 @@ GameObject:
   - component: {fileID: 690272919356243165}
   - component: {fileID: 8414987091178704126}
   - component: {fileID: 1185509087365998459}
+  - component: {fileID: 1938411120369702051}
   m_Layer: 0
   m_Name: PrisonnerZone
   m_TagString: Untagged
@@ -1840,6 +1841,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1938411120369702051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6494199330710349607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ecdbd66af6a2e6489846b06a938221b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attachWall: {fileID: 1229802792061756907}
+  reverseAngle: 1
 --- !u!1 &8281996823620830473
 GameObject:
   m_ObjectHideFlags: 0
@@ -1853,6 +1868,7 @@ GameObject:
   - component: {fileID: 8281996823620830471}
   - component: {fileID: 8281996823620830470}
   - component: {fileID: 1229802792061756907}
+  - component: {fileID: 7336014946190997182}
   m_Layer: 0
   m_Name: 3EaWall-B
   m_TagString: Untagged
@@ -1968,12 +1984,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85b6238392b38ec49aacf8f35579e701, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfAgentsNeedToBreak: 2
-  health: 6
+  numberOfAgentsNeedToBreak: 12
+  health: 30
   angleSpeed: -3
   prisonnerZone: {fileID: 2501411287810258915}
   prisonnerZone2: {fileID: 6796220173903567937}
   reverseAngle: 0
+--- !u!114 &7336014946190997182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8281996823620830473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: 0
+  eraseRenderer: 0
+  originalLayer: 0
+  originalMaterials: []
 --- !u!1 &9093153858764207219
 GameObject:
   m_ObjectHideFlags: 0
@@ -2170,6 +2202,7 @@ GameObject:
   - component: {fileID: 3479481319911553240}
   - component: {fileID: 2115002386342364936}
   - component: {fileID: 1004830464196239141}
+  - component: {fileID: 2234995403797010360}
   m_Layer: 0
   m_Name: PrisonnerZone (1)
   m_TagString: Untagged
@@ -2250,3 +2283,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2234995403797010360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9199149486927837752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ecdbd66af6a2e6489846b06a938221b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attachWall: {fileID: 1229802792061756907}
+  reverseAngle: 0
