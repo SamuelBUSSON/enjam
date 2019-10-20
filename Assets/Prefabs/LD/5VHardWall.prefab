@@ -154,7 +154,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 032509a4d36083246ae834cdc535866d, type: 2}
+  - {fileID: 2100000, guid: 47bfa423bf83e8844ae1bbbe096dab96, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -204,6 +204,8 @@ MonoBehaviour:
   health: 230
   angleSpeed: -3
   prisonnerZone: {fileID: 2501411287810258915}
+  prisonnerZone2: {fileID: 0}
+  reverseAngle: 0
 --- !u!54 &3645450672069202133
 Rigidbody:
   m_ObjectHideFlags: 0
