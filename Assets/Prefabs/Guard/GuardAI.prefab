@@ -132,8 +132,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4852484f9d5effa419a5b8b7a74d7a23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minSoundRange: 3
-  maxSoundRange: 5
+  minSoundRange: 2
+  maxSoundRange: 8
 --- !u!1001 &1174191518391979460
 PrefabInstance:
   m_ObjectHideFlags: 0
