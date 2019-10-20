@@ -194,6 +194,14 @@ public class FlockingAgent : MonoBehaviour
         {
             navMeshAgent.SetDestination(player.transform.position);
         }
+
+        
+        float myTime = animator.GetCurrentAnimatorStateInfo(0).normalizedTime % animator.GetCurrentAnimatorStateInfo(0).length;
+        
+        if ((myTime >= 0.25f && myTime <= 0.40f) || (myTime >= 0.65f && myTime <= 0.8f))
+        {
+            //AkSoundEngine.PostEvent("Prisoniers_jump_in_party", gameObject);
+        }
     }
 
     public void SetDestinationReach(bool new_destination)

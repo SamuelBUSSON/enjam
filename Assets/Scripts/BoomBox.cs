@@ -14,12 +14,16 @@ public class BoomBox : MonoBehaviour
     public float minRange = 5.0f;
     public float maxRange = 10.0f;
 
-
     private float currentVolume;
     private AudioSource source;
     private SphereCollider triggerZone;
 
     private Animator animator;
+    private uint idPartySound = 0;
+
+
+    private float maxTimerParty = 0.5f;
+    private float timerParty = 0.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -45,6 +49,24 @@ public class BoomBox : MonoBehaviour
             }
         }
 
+        timerParty += Time.deltaTime;
+
+        if(timerParty >= maxTimerParty)
+        {
+            if (currentVolume >= 60 && FlockingManager.instance.GetNumberOfAgentsInCrew() > 1)
+            {
+                idPartySound = AkSoundEngine.PostEvent("Prisoniers_happy_voice_in_party", gameObject);
+            }
+            else
+            {
+                AkSoundEngine.StopPlayingID(idPartySound);
+                idPartySound = 0;
+            }
+            timerParty = 0.0f;
+        }
+
+
+
     }
 
     public float GetPercentVolume()
@@ -59,6 +81,7 @@ public class BoomBox : MonoBehaviour
         {
             currentVolume = maxVolume;
         }
+
         UpdateVal();
     }
 
@@ -77,6 +100,8 @@ public class BoomBox : MonoBehaviour
         triggerZone.radius = Mathf.Lerp(minRange, maxRange, GetPercentVolume());
         AkSoundEngine.SetRTPCValue("volume_party", currentVolume);
         AkSoundEngine.SetRTPCValue("volume_idle",  currentVolume);
+
+       
 
         if (GetPercentVolume() <= 0.3f)
         {
@@ -99,6 +124,15 @@ public class BoomBox : MonoBehaviour
         if (other.GetComponent<Wall>())
         {
             other.GetComponent<Wall>().SetShakeTheWall(true);
+        }
+        if (other.GetComponentInParent<FlockingAgent>())
+        {
+            FlockingAgent fa = other.GetComponentInParent<FlockingAgent>();
+
+            if (!fa.IsInCrew() && fa.volumeNeedToBeHire <= GetPercentVolume() * 100)
+            {
+                fa.JoinCrew();
+            }
         }
     }
 

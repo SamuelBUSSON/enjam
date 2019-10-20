@@ -70,7 +70,7 @@ public class DetectPlayer : MonoBehaviour
             playerTimer += Time.deltaTime;
             if (playerTimer >= timerToGetCaptured)
             {
-                Debug.Log("Game Over");
+                AkSoundEngine.PostEvent("Game_over", gameObject);
                 playerTimer = 0.0f;
             }
         }
@@ -81,6 +81,8 @@ public class DetectPlayer : MonoBehaviour
         if (other.GetComponent<FlockingAgent>())
         {            
             DetectEntity(other);
+
+           
 
             if (agentInZone.Count == 0)
             {
@@ -100,6 +102,8 @@ public class DetectPlayer : MonoBehaviour
 
     private void DetectEntity(Collider other)
     {
+        AkSoundEngine.PostEvent("Guardian_interpelation_voice", gameObject);
+
         float angle = Vector3.Angle(transform.right, other.transform.right);
         transform.Rotate(new Vector3(0, -angle, 0));
 

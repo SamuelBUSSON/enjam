@@ -41,6 +41,9 @@ public class Wall : MonoBehaviour
 
     private bool shakeTheWall = false;
 
+    private bool once = false;
+
+    uint punchToWallId;
 
     private void Start()
     {
@@ -65,6 +68,14 @@ public class Wall : MonoBehaviour
         {
             if (player != null)
             {
+
+                if (!once)
+                {
+                    punchToWallId = AkSoundEngine.PostEvent("Punch_to_wall", gameObject);
+
+                    once = true;
+                }
+
                 if (flockingManager.GetNumberOfAgentsInCrew() >= numberOfAgentsNeedToBreak)
                 {
                     foreach (FlockingAgent agent in flockingManager.GetAgentsInCrew())
@@ -83,7 +94,12 @@ public class Wall : MonoBehaviour
             }
 
             if (health == 0)
-            {
+            {              
+
+                AkSoundEngine.StopPlayingID(punchToWallId);
+
+                once = false;
+
                 player = null;
                 Exit();
                 GetComponent<Collider>().enabled = false;
@@ -102,6 +118,7 @@ public class Wall : MonoBehaviour
                 }
                 else
                 {
+                    AkSoundEngine.PostEvent("Wall_destruction", gameObject);
                     over = true;
                 }
             }
