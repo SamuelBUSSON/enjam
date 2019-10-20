@@ -56,6 +56,22 @@ public class FlockingManager : MonoBehaviour
         return agentsInCrew;
     }
 
+    public void SetAllAgentDiscret()
+    {
+        foreach (FlockingAgent agent in GetAgentsInCrew())
+        {
+            agent.SetHidding();
+        }
+    }
+
+    public void SetAllAgentDancing()
+    {
+        foreach (FlockingAgent agent in GetAgentsInCrew())
+        {
+            agent.SetDance();
+        }
+    }
+
     public List<FlockingAgent> GetAttackAgents()
     {
         List<FlockingAgent> attackAgents = new List<FlockingAgent>();

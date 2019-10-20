@@ -19,6 +19,9 @@ public class FlockingAgent : MonoBehaviour
 
     public GameObject hitParticleEffect;
 
+    [Range(0.0f, 100.0f)]
+    public float volumeNeedToBeHire = 0.0f;
+
     private FlockingManager flockingManager;
     private FlockingAgent neighborsSelected;
     private NavMeshAgent navMeshAgent;
@@ -45,7 +48,7 @@ public class FlockingAgent : MonoBehaviour
     private bool onceIncrement = false;
 
     private Vector3 basePostion;
-
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -89,6 +92,21 @@ public class FlockingAgent : MonoBehaviour
                     break;
             }            
         }
+    }
+
+
+    public void SetDance()
+    {
+        animator.SetBool("IsHidding", false);
+        animator.SetBool("IsIdle", false);
+        animator.SetBool("IsDancing", true);
+    }
+
+    public void SetHidding()
+    {
+        animator.SetBool("IsHidding", true);
+        animator.SetBool("IsIdle", false);
+        animator.SetBool("IsDancing", false);
     }
 
     public void GoBackToCell()

@@ -1,5 +1,29 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &838682730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5183495860001648024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8940ddbe50944fa4b8a50fb8c8216530, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7091527525174314507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5183495860001648024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7aefcccdb7cdd34b96b3e7eb32466b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &8636703893186115214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33,7 +57,7 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &7091527525174314507
+--- !u!114 &3706846505940141910
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,9 +66,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 5183495860001648024}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7aefcccdb7cdd34b96b3e7eb32466b1, type: 3}
+  m_Script: {fileID: 11500000, guid: 118257a722471464e914d7b613534b4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  triggerList: f7e1664c
+  useOtherObject: 0
+  data:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 8c9c6cde2248abb4bb4f04acfdf06cf5,
+      type: 2}
+  decodeBank: 0
+  loadAsynchronous: 0
+  saveDecodedBank: 0
+  unloadTriggerList: 
+  bankNameInternal: 
+  valueGuidInternal: 
 --- !u!1 &5670723051607005385
 GameObject:
   m_ObjectHideFlags: 0

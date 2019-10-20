@@ -9,7 +9,6 @@ public class BoomBox : MonoBehaviour
     public float minVolume = 0.0f;
     public float maxVolume = 100.0f;
     public float speedVolume = 20.0f;
-    public Slider sliderVolume;
 
     [Header("Detection Zone")]
     public float minRange = 5.0f;
@@ -20,11 +19,14 @@ public class BoomBox : MonoBehaviour
     private AudioSource source;
     private SphereCollider triggerZone;
 
+    private Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
         currentVolume = minVolume;
         triggerZone = GetComponent<SphereCollider>();
+        animator = GetComponent<Animator>();
         UpdateVal();
     }
 
@@ -68,10 +70,23 @@ public class BoomBox : MonoBehaviour
 
     private void UpdateVal()
     {
-        sliderVolume.value = GetPercentVolume();
         triggerZone.radius = Mathf.Lerp(minRange, maxRange, GetPercentVolume());
-
         AkSoundEngine.SetRTPCValue("volume", currentVolume);
+
+        if(GetPercentVolume() <= 0.3f)
+        {
+            animator.SetBool("IsHidding", true);
+            animator.SetBool("IsDancing", false);
+
+            FlockingManager.instance.SetAllAgentDiscret();
+        }
+        else
+        {
+            animator.SetBool("IsHidding", false);
+            animator.SetBool("IsDancing", true);
+
+            FlockingManager.instance.SetAllAgentDancing();
+        }
     }
 
     private void OnTriggerEnter(Collider other)

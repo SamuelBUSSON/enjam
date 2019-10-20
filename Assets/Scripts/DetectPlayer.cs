@@ -23,9 +23,7 @@ public class DetectPlayer : MonoBehaviour
     private Animator anim;
     private float navMeshSpeed = 0.0f;
 
-    private Transform firstAgent;
-    
-    // TODO :: Ne pas retrecir la zone quand quelqu'un est dedans
+    private Transform firstAgent;    
 
     // Start is called before the first frame update
     void Start()
@@ -43,8 +41,11 @@ public class DetectPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentSoundRange = Mathf.Lerp(minSoundRange, maxSoundRange, player.GetComponentInChildren<BoomBox>().GetPercentVolume());
-        triggerZone.radius = currentSoundRange;
+        if(agentInZone.Count != 0)
+        {
+            currentSoundRange = Mathf.Lerp(minSoundRange, maxSoundRange, player.GetComponentInChildren<BoomBox>().GetPercentVolume());
+            triggerZone.radius = currentSoundRange;
+        }
 
         if (firstAgent)
         {

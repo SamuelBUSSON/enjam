@@ -18,6 +18,8 @@ public class PlayerMovement : MonoBehaviour
 
     private NavMeshAgent navMeshAgent;
     private Vector3 forwardVector;
+
+    private BoomBox boomBox;
     
 
     // Start is called before the first frame update
@@ -27,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
 
         position = transform.position;
         rigidbody = GetComponent<Rigidbody>();
-
+        boomBox = GetComponentInChildren<BoomBox>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         forwardVector = new Vector3(0,0,0);
         forwardVector = transform.forward;
@@ -50,7 +52,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 FlockingAgent fa = FlockingManager.instance.GetAgent(i);
 
-                if (!fa.IsInCrew())
+                if (!fa.IsInCrew() && fa.volumeNeedToBeHire <= boomBox.GetPercentVolume()*100)
                 {
                     if (Vector3.Distance(fa.transform.position, transform.position) <= rangeRecruit)
                     {
