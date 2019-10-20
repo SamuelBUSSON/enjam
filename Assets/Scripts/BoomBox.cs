@@ -33,14 +33,18 @@ public class BoomBox : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.DownArrow))
+        if(GameManager.instance.currentState != GameManager.State.gameOver)
         {
-            DecreaseVolume();
+            if (Input.GetKey(KeyCode.DownArrow))
+            {
+                DecreaseVolume();
+            }
+            if (Input.GetKey(KeyCode.UpArrow))
+            {
+                IncreaseVolume();
+            }
         }
-        if (Input.GetKey(KeyCode.UpArrow))
-        {
-            IncreaseVolume();
-        }
+
     }
 
     public float GetPercentVolume()

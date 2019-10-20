@@ -39,8 +39,11 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Move();
-        Recruit();        
+        if (GameManager.instance.currentState != GameManager.State.gameOver)
+        {
+            Move();
+            Recruit();
+        }
     }
     
 
