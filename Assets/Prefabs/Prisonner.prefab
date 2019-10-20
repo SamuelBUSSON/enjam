@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 7508800822022904800}
   - component: {fileID: 6945252914350245096}
   - component: {fileID: 64249311}
+  - component: {fileID: 3789860500262390261}
+  - component: {fileID: 3337179019161303956}
   m_Layer: 8
   m_Name: Prisonner
   m_TagString: Untagged
@@ -101,6 +103,52 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0.72, z: 0.04}
+--- !u!33 &3789860500262390261
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6317948151278466483}
+  m_Mesh: {fileID: 4300000, guid: 1bfe6c0429d3ea94d9cac0ce7601b834, type: 2}
+--- !u!23 &3337179019161303956
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6317948151278466483}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!1001 &8137354014976844655
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -108,11 +156,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6317948151278466482}
     m_Modifications:
-    - target: {fileID: 7006600081358512902, guid: aaa16a9c8ad686945aa9b8d3c3f89f07,
-        type: 3}
-      propertyPath: m_Name
-      value: PrisonnerChar
-      objectReference: {fileID: 0}
     - target: {fileID: 7006600081358512897, guid: aaa16a9c8ad686945aa9b8d3c3f89f07,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -167,6 +210,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7006600081358512902, guid: aaa16a9c8ad686945aa9b8d3c3f89f07,
+        type: 3}
+      propertyPath: m_Name
+      value: PrisonnerChar
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aaa16a9c8ad686945aa9b8d3c3f89f07, type: 3}
