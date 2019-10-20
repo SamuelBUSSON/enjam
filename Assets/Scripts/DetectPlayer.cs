@@ -42,7 +42,7 @@ public class DetectPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentSoundRange = Mathf.Lerp(minSoundRange, maxSoundRange, player.GetComponent<BoomBox>().GetPercentVolume());
+        currentSoundRange = Mathf.Lerp(minSoundRange, maxSoundRange, player.GetComponentInChildren<BoomBox>().GetPercentVolume());
         triggerZone.radius = currentSoundRange;
 
         if (firstAgent)
@@ -54,7 +54,6 @@ public class DetectPlayer : MonoBehaviour
                 {
                     agent.SetAction(FlockingAgent.Action.captured);
                 }
-
                 timer = 0.0f;
             }
         }
@@ -70,13 +69,15 @@ public class DetectPlayer : MonoBehaviour
 
             transform.Rotate(new Vector3(0, -angle, 0));
 
-            anim.SetTrigger("Detect");
-            agentInZone.Add(other.GetComponent<FlockingAgent>());
-
-            if(agentInZone.Count == 0)
+            if (agentInZone.Count == 0)
             {
                 firstAgent = other.transform;
             }
+
+            anim.SetTrigger("Detect");
+            agentInZone.Add(other.GetComponent<FlockingAgent>());
+
+
         }
     }
 

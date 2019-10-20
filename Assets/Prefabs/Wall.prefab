@@ -279,3 +279,4 @@ MonoBehaviour:
   angleSpeed: -3
   prisonnerZone: {fileID: 3722206743297635812}
   prisonnerZone2: {fileID: 5830547660512745743}
+  reverseAngle: 0
