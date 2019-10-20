@@ -89,8 +89,8 @@ public class BoomBox : MonoBehaviour
             FlockingManager.instance.SetAllAgentDancing();
         }
     }
-
-    private void OnTriggerEnter(Collider other)
+    
+    private void OnTriggerStay(Collider other)
     {
         if (other.GetComponent<Wall>())
         {

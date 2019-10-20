@@ -14,6 +14,7 @@ public class DetectPlayer : MonoBehaviour
     public Light spotLigh;
 
     private float timer;
+    private float playerTimer;
 
     private float currentSoundRange;
     private SphereCollider triggerZone;
@@ -25,7 +26,9 @@ public class DetectPlayer : MonoBehaviour
     private Animator anim;
     private float navMeshSpeed = 0.0f;
 
-    private Transform firstAgent;    
+    private Transform firstAgent;
+
+    private bool playerIsIn = false;
 
     // Start is called before the first frame update
     void Start()
@@ -61,27 +64,57 @@ public class DetectPlayer : MonoBehaviour
                 timer = 0.0f;
             }
         }
+
+        if (playerIsIn)
+        {
+            playerTimer += Time.deltaTime;
+            if (playerTimer >= timerToGetCaptured)
+            {
+                Debug.Log("Game Over");
+                playerTimer = 0.0f;
+            }
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<FlockingAgent>())
-        {
-            GetComponentInParent<NavMeshAgent>().speed = 0;
-
-            float angle = Vector3.Angle(transform.right, other.transform.right);
-
-            transform.Rotate(new Vector3(0, -angle, 0));
+        {            
+            DetectEntity(other);
 
             if (agentInZone.Count == 0)
             {
                 firstAgent = other.transform;
             }
-
-            anim.SetTrigger("Detect");
+            
             agentInZone.Add(other.GetComponent<FlockingAgent>());
+        }
 
+        if (other.CompareTag("Player"))
+        {
+            DetectEntity(other);
+            player = other.transform;
+            playerIsIn = true;
+        }
+    }
 
+    private void DetectEntity(Collider other)
+    {
+        float angle = Vector3.Angle(transform.right, other.transform.right);
+        transform.Rotate(new Vector3(0, -angle, 0));
+
+        GetComponentInParent<NavMeshAgent>().speed = 0;
+        anim.SetBool("Detect", true);
+        anim.SetBool("IsWalking", false);
+    }
+
+    private void EntityMoveAway(Collider other)
+    {
+        if (agentInZone.Count == 0)
+        {
+            GetComponentInParent<NavMeshAgent>().speed = navMeshSpeed;
+            anim.SetBool("Detect", false);
+            anim.SetBool("IsWalking", true);
         }
     }
 
@@ -90,16 +123,21 @@ public class DetectPlayer : MonoBehaviour
         if (other.GetComponent<FlockingAgent>())
         {
             agentInZone.Remove(other.GetComponent<FlockingAgent>());           
-            if(agentInZone.Count == 0)
-            {
-                GetComponentInParent<NavMeshAgent>().speed = navMeshSpeed;
-            }
+
 
             if(other.transform == firstAgent)
             {
                 firstAgent = null;
                 timer = 0.0f;
             }
+            EntityMoveAway(other);
+        }
+
+
+        if (other.CompareTag("Player"))
+        {
+            EntityMoveAway(other);
+            playerIsIn = false;
         }
     }
 }
