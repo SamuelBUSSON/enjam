@@ -57,7 +57,10 @@ public class Wall : MonoBehaviour
         basePositon = transform.position;
 
         maxHealth = health;
-        
+
+        numberOfAgentsNeedToBreak--;
+
+
     }
 
     private void Update()
