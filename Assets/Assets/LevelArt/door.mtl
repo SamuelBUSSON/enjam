@@ -1,0 +1,54 @@
+# Blender MTL File: 'door.blend'
+# Material Count: 5
+
+newmtl Material
+Ns 323.999994
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd C:\\Users\\morea\\OneDrive\\Documents\\PBD\\Assets\\Prisoner\\dorrtex.jpg
+
+newmtl Material.001
+Ns 323.999994
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd C:\\Users\\morea\\OneDrive\\Documents\\PBD\\Assets\\Prisoner\\dorrtex.jpg
+
+newmtl Metal
+Ns 225.000000
+Ka 0.938182 0.938182 0.938182
+Kd 0.329520 0.329520 0.329520
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 3
+
+newmtl Metal.001
+Ns 225.000000
+Ka 0.938182 0.938182 0.938182
+Kd 0.329520 0.329520 0.329520
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 3
+
+newmtl Metal.002
+Ns 225.000000
+Ka 0.938182 0.938182 0.938182
+Kd 0.329520 0.329520 0.329520
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.450000
+d 1.000000
+illum 3
