@@ -26,6 +26,8 @@ public class FlockingAgent : MonoBehaviour
     private CinemachineVirtualCamera vcam;
     private CinemachineBasicMultiChannelPerlin noise;
 
+    private Animator animator;
+
     private GameObject player;    
 
     private bool isInCrew = false;
@@ -54,6 +56,8 @@ public class FlockingAgent : MonoBehaviour
 
         basePositionAttack = new Vector3();
 
+        animator = GetComponentInChildren<Animator>();        
+
         vcam = GameObject.Find("CM vcam1").GetComponent<CinemachineVirtualCamera>();
         noise = vcam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
     }
@@ -73,7 +77,7 @@ public class FlockingAgent : MonoBehaviour
                 case Action.destroyWall:
                     DestroyWall();
                     break;
-            }
+            }            
         }
     }
 
@@ -98,6 +102,9 @@ public class FlockingAgent : MonoBehaviour
             neighborsSelected = neighFa;
         }
         isInCrew = true;
+
+        animator.SetBool("IsIdle", false);
+        animator.SetBool("IsDancing", true);
     }    
 
     public void DestroyWall()
@@ -177,7 +184,7 @@ public class FlockingAgent : MonoBehaviour
         return new Vector3(Random.Range(posPlayer.x - numberOfAgentsInCrew * offset, posPlayer.x + numberOfAgentsInCrew * offset), 0, Random.Range(posPlayer.z - numberOfAgentsInCrew * offset, posPlayer.z + numberOfAgentsInCrew * offset));
     }
 
-    public void AttackWall()
+    public void AttackWall(Vector3 returnPos)
     {
         if (!attackOnce)
         {
@@ -196,7 +203,7 @@ public class FlockingAgent : MonoBehaviour
             Sequence attackSequence = DOTween.Sequence();
             attackSequence.Append(transform.DOJump(new Vector3(xPos, yPos, zPos) + direction, 0.0f, 1, 0.3f)).OnStart(() => Noise(5.0f, 1.0f));
             InstantiateEffect(hitParticleEffect, new Vector3(xPos, yPos, zPos) + direction);
-            attackSequence.Append(transform.DOJump(basePositionAttack, 2.0f, 1, 0.5f)).OnComplete(() => Noise(0.0f, 0.0f)).OnComplete(() => attackOnce = false);
+            attackSequence.Append(transform.DOJump(returnPos, 2.0f, 1, 0.5f)).OnComplete(() => Noise(0.0f, 0.0f)).OnComplete(() => attackOnce = false);
 
             wallTarget.GetComponent<Wall>().DecreaseHealth();
         }
