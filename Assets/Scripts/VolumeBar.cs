@@ -37,22 +37,14 @@ public class VolumeBar : MonoBehaviour
             {
                 if (volumeUi.goTimerPair && !volumeUi.goTimerImpair)
                 {
-                    if (!complete)
-                    {
-                        complete = true;
-                        GetComponent<RectTransform>().DOJumpAnchorPos(GetComponent<RectTransform>().anchoredPosition, 6.0f, 1, 0.6f).OnComplete(() => complete = false);
-                    }
+                    Jump();
                 }
             }
             else
             {
                 if (volumeUi.goTimerImpair && volumeUi.goTimerPair)
                 {
-                    if (!complete)
-                    {
-                        complete = true;
-                        GetComponent<RectTransform>().DOJumpAnchorPos(GetComponent<RectTransform>().anchoredPosition, 6.0f, 1, 0.6f).OnComplete(() => complete = false);
-                    }
+                    Jump();
                 }
             }
 
@@ -62,6 +54,15 @@ public class VolumeBar : MonoBehaviour
         else
         {
             image.sprite = volumeUi.imageOff;
+        }
+    }
+
+    public void Jump()
+    {
+        if (!complete)
+        {
+            complete = true;
+            GetComponent<RectTransform>().DOJumpAnchorPos(GetComponent<RectTransform>().anchoredPosition, 6.0f, 1, 0.6f).OnComplete(() => complete = false);
         }
     }
 

@@ -41,11 +41,11 @@ public class DetectPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(agentInZone.Count != 0)
-        {
+     /*   if(agentInZone.Count != 0)
+        {*/
             currentSoundRange = Mathf.Lerp(minSoundRange, maxSoundRange, player.GetComponentInChildren<BoomBox>().GetPercentVolume());
             triggerZone.radius = currentSoundRange;
-        }
+    //    }
 
         if (firstAgent)
         {

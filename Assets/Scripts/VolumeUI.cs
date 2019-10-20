@@ -7,7 +7,7 @@ public class VolumeUI : MonoBehaviour
 
     public float jumpTimerPair = 0.5f;
     public float jumpTimerImpair = 1.0f;
-    public float endTimer = 1.5f;
+    public float endTimer = 1.3f;
 
     [HideInInspector()]
     public float timer = 0.0f;
