@@ -329,6 +329,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Camera
       objectReference: {fileID: 0}
+    - target: {fileID: 3080699180533133710, guid: 6adfd4df55fc7434f9967adeb7e9da0f,
+        type: 3}
+      propertyPath: near clip plane
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3080699180533133710, guid: 6adfd4df55fc7434f9967adeb7e9da0f,
+        type: 3}
+      propertyPath: far clip plane
+      value: 5000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3080699180533133710, guid: 6adfd4df55fc7434f9967adeb7e9da0f,
+        type: 3}
+      propertyPath: field of view
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 3080699180121559491, guid: 6adfd4df55fc7434f9967adeb7e9da0f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -399,22 +414,9 @@ PrefabInstance:
       propertyPath: field of view
       value: 40
       objectReference: {fileID: 0}
-    - target: {fileID: 3080699180533133710, guid: 6adfd4df55fc7434f9967adeb7e9da0f,
-        type: 3}
-      propertyPath: near clip plane
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3080699180533133710, guid: 6adfd4df55fc7434f9967adeb7e9da0f,
-        type: 3}
-      propertyPath: far clip plane
-      value: 5000
-      objectReference: {fileID: 0}
-    - target: {fileID: 3080699180533133710, guid: 6adfd4df55fc7434f9967adeb7e9da0f,
-        type: 3}
-      propertyPath: field of view
-      value: 40
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3080699180121559489, guid: 6adfd4df55fc7434f9967adeb7e9da0f, type: 3}
+    - {fileID: 3080699180121559488, guid: 6adfd4df55fc7434f9967adeb7e9da0f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 6adfd4df55fc7434f9967adeb7e9da0f, type: 3}
 --- !u!1 &5183495860001648024 stripped
 GameObject:
