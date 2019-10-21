@@ -79,6 +79,7 @@ public class TutorialManager : MonoBehaviour
 
     public void CompletedAllTutorials()
     {
+        AkSoundEngine.StopAll();
         expText.text = "You have completed all tutorials";
         SceneManager.LoadScene("Menu");
 

@@ -5,6 +5,7 @@ using UnityEngine.AI;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
 using AK.Wwise;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -39,10 +40,14 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.instance.currentState != GameManager.State.gameOver)
+        if (GameManager.instance.currentState != GameManager.State.gameOver || GameManager.instance.currentState != GameManager.State.victory)
         {
             Move();
             Recruit();
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
         }
     }
     
@@ -92,15 +97,14 @@ public class PlayerMovement : MonoBehaviour
 
             moveDirection.Normalize();
 
-            float angle = Angle(forwardVector, moveDirection);
+            float angle = Angle(-forwardVector, moveDirection);
 
             if ( (moveDirection.x > 0.0 || moveDirection.y > 0.0 || moveDirection.z > 0.0)  && !(moveDirection.z < 0.0 && moveDirection.x > 0.0))
             {
                 angle = -angle;
-            }
+            }            
 
-            transform.DOLocalRotate(new Vector3(transform.eulerAngles.x, angle, transform.eulerAngles.z), 0.3f);
-                
+            transform.DOLocalRotate(new Vector3(transform.eulerAngles.x, angle, transform.eulerAngles.z), 0.3f);                
 
             rigidbody.velocity = moveDirection * flockingManager.playerSpeed;
         }

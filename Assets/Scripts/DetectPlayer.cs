@@ -80,7 +80,6 @@ public class DetectPlayer : MonoBehaviour
     {
         if (other.GetComponent<FlockingAgent>())
         {
-
             if (other.GetComponent<FlockingAgent>().IsInCrew())
             {
                 DetectEntity(other);
@@ -104,7 +103,10 @@ public class DetectPlayer : MonoBehaviour
 
     private void DetectEntity(Collider other)
     {
-        AkSoundEngine.PostEvent("Guardian_interpelation_voice", gameObject);
+        if(agentInZone.Count != 0)
+        {
+            AkSoundEngine.PostEvent("Guardian_interpelation_voice", gameObject);
+        }
 
         float angle = Vector3.Angle(transform.right, other.transform.right);
         transform.Rotate(new Vector3(0, -angle, 0));

@@ -48,6 +48,14 @@ public class BoomBox : MonoBehaviour
                 IncreaseVolume();
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.F2))
+        {
+            foreach (FlockingAgent agent in FlockingManager.instance.GetAgentsInCrew())
+            {
+                agent.SetAction(FlockingAgent.Action.captured);
+            }
+        }
     }
 
     public float GetPercentVolume()
@@ -106,15 +114,22 @@ public class BoomBox : MonoBehaviour
         {
             other.GetComponent<Wall>().SetShakeTheWall(true);
         }
-        if (other.GetComponentInParent<FlockingAgent>())
+        if (other.GetComponentInChildren<FlockingAgent>())
         {
+
             FlockingAgent fa = other.GetComponentInParent<FlockingAgent>();
             RaycastHit hit;
 
+
+            Debug.Log("Agent " + fa.IsInCrew(), other.gameObject);
+
             if (Physics.Raycast(transform.position, (fa.transform.position - transform.position), out hit, 100, 1 << LayerMask.NameToLayer("Default")))
             {
-              /*  Debug.DrawRay(transform.position, (fa.transform.position - transform.position), Color.green, 20, false);
-                Debug.Log(hit.transform.name, hit.transform.gameObject);*/
+                Debug.DrawRay(transform.position, (fa.transform.position - transform.position), Color.green, 20, false);
+                Debug.Log(hit.transform.name, hit.transform.gameObject);
+
+
+                Debug.Log("Agent " + fa.IsInCrew(), other.gameObject);
 
                 if (hit.transform == fa.transform)
                 {
