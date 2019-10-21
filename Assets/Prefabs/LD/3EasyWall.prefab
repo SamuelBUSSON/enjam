@@ -322,8 +322,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85b6238392b38ec49aacf8f35579e701, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfAgentsNeedToBreak: 12
-  health: 30
+  numberOfAgentsNeedToBreak: 15
+  health: 35
   angleSpeed: -3
   prisonnerZone: {fileID: 2501411287810258915}
   prisonnerZone2: {fileID: 401148721339440465}

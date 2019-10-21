@@ -55,7 +55,7 @@ public class DetectPlayer : MonoBehaviour
         if (firstAgent)
         {
             timer += Time.deltaTime;
-            if(timer >= timerToGetCaptured)
+            if (timer >= timerToGetCaptured)
             {
                 foreach (FlockingAgent agent in agentInZone)
                 {

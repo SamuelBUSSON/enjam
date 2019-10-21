@@ -75,19 +75,19 @@ public class PlayerMovement : MonoBehaviour
 
             if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Z))
             {
-                moveDirection.z += 1.0f;
+                moveDirection.z -= 1.0f;
             }
             if (Input.GetKey(KeyCode.S))
             {
-                moveDirection.z -= 1.0f;
+                moveDirection.z += 1.0f;
             }
             if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.Q))
             {
-                moveDirection.x -= 1.0f;
+                moveDirection.x += 1.0f;
             }
             if (Input.GetKey(KeyCode.D))
             {
-                moveDirection.x += 1.0f;
+                moveDirection.x -= 1.0f;
             }
 
             moveDirection.Normalize();

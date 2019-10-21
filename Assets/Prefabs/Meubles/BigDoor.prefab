@@ -115,9 +115,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85b6238392b38ec49aacf8f35579e701, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfAgentsNeedToBreak: 5
-  health: 10
-  angleSpeed: 0
+  numberOfAgentsNeedToBreak: 40
+  health: 150
+  angleSpeed: -3
   prisonnerZone: {fileID: 5975243413966979780}
   prisonnerZone2: {fileID: 3654905649741462781}
   reverseAngle: 0
