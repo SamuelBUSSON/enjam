@@ -29,7 +29,7 @@ public class VolumeBar : MonoBehaviour
 
     private void Update()
     {
-        if(valToChangeImage <= player.GetComponentInChildren<BoomBox>().GetPercentVolume()*100)
+        if(valToChangeImage <= player.GetComponentInChildren<BoomBox>().GetPercentVolume()*100 + 0.1f)
         {
             image.sprite = volumeUi.imageOn;
 

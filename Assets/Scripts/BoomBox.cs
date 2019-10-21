@@ -8,7 +8,7 @@ public class BoomBox : MonoBehaviour
     [Header("Volume")]
     public float minVolume = 0.0f;
     public float maxVolume = 100.0f;
-    public float speedVolume = 20.0f;
+    public float speedVolume = 10.0f;
 
     [Header("Detection Zone")]
     public float minRange = 5.0f;
@@ -39,11 +39,11 @@ public class BoomBox : MonoBehaviour
     {
         if(GameManager.instance.currentState != GameManager.State.gameOver)
         {
-            if (Input.GetKey(KeyCode.DownArrow))
+            if (Input.GetKeyDown(KeyCode.DownArrow))
             {
                 DecreaseVolume();
             }
-            if (Input.GetKey(KeyCode.UpArrow))
+            if (Input.GetKeyDown(KeyCode.UpArrow))
             {
                 IncreaseVolume();
             }
@@ -57,7 +57,7 @@ public class BoomBox : MonoBehaviour
 
     private void IncreaseVolume()
     {
-        currentVolume += speedVolume * Time.deltaTime;
+        currentVolume += speedVolume;
         if(currentVolume >= maxVolume)
         {
             currentVolume = maxVolume;
@@ -68,7 +68,7 @@ public class BoomBox : MonoBehaviour
 
     private void DecreaseVolume()
     {
-        currentVolume -= speedVolume * Time.deltaTime;
+        currentVolume -= speedVolume;
         if(currentVolume <= minVolume)
         {
             currentVolume = minVolume;
