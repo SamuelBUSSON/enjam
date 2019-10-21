@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6636109459114780444}
   - component: {fileID: 5184135897709191208}
   - component: {fileID: 864625860901945124}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PrisonnerZone (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 8414987091178704126}
   - component: {fileID: 1185509087365998459}
   - component: {fileID: 166908216239058356}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PrisonnerZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}

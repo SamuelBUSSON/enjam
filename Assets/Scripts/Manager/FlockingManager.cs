@@ -7,12 +7,18 @@ public class FlockingManager : MonoBehaviour
     public static FlockingManager instance;
 
     public float playerSpeed = 1.0f;
+
+    public float playerMinSpeed = 2.0f;
+    public float playerMaxSpeed = 8.0f;
+
     public float offsetLength = 1.5f;
 
     private Vector3 flockCenter;
     private Vector3 flockVelocity;
 
     private List<FlockingAgent> agents;
+
+    private Transform player;
 
     // Start is called before the first frame update
     void Awake()
@@ -35,7 +41,17 @@ public class FlockingManager : MonoBehaviour
        // DontDestroyOnLoad(gameObject);
 
         agents = new List<FlockingAgent>();
-    }   
+    }
+
+    private void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+    }
+
+    private void Update()
+    {
+        playerSpeed = Mathf.Lerp(playerMinSpeed, playerMaxSpeed, player.GetComponentInChildren<BoomBox>().GetPercentVolume());
+    }
 
     public List<FlockingAgent> GetAgents()
     {

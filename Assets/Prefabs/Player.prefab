@@ -140,23 +140,6 @@ MonoBehaviour:
   speedVolume: 10
   minRange: 5
   maxRange: 10
---- !u!114 &2700109105345825098
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9160692960969720917}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c748a7ef375aa6848a3d09e5721fd620, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minVolume: 0
-  maxVolume: 100
-  speedVolume: 10
-  minRange: 5
-  maxRange: 10
 --- !u!1001 &7814788011923881729
 PrefabInstance:
   m_ObjectHideFlags: 0

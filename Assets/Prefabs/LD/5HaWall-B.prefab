@@ -1301,7 +1301,7 @@ GameObject:
   - component: {fileID: 6513262617025612592}
   - component: {fileID: 7531644977057351643}
   - component: {fileID: 257782972920377472}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PrisonnerZone (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1868,7 +1868,7 @@ GameObject:
   - component: {fileID: 8414987091178704126}
   - component: {fileID: 1185509087365998459}
   - component: {fileID: 1320289332387023053}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PrisonnerZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}

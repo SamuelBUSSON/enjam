@@ -132,6 +132,8 @@ public class FlockingAgent : MonoBehaviour
     public void JoinCrew()
     {
         isInCrew = true;
+        
+        SetLayerRecursively(gameObject, 8);
 
         SetAction(Action.followPlayer);
 
@@ -140,7 +142,17 @@ public class FlockingAgent : MonoBehaviour
         player.GetComponentInChildren<BoomBox>().UpdateVal();
 
         AkSoundEngine.PostEvent("Prisoniers_happy_voice_in_party", gameObject);
-    }    
+    }
+
+    public void SetLayerRecursively(GameObject obj, int  layer)
+    {
+        obj.layer = layer;
+
+        foreach(Transform child in obj.transform)
+        {
+            SetLayerRecursively(child.gameObject, layer);
+        }
+    }
 
     public void DestroyWall()
     {

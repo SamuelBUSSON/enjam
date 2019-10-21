@@ -109,11 +109,23 @@ public class BoomBox : MonoBehaviour
         if (other.GetComponentInParent<FlockingAgent>())
         {
             FlockingAgent fa = other.GetComponentInParent<FlockingAgent>();
+            RaycastHit hit;
 
-            if (!fa.IsInCrew() && fa.volumeNeedToBeHire <= GetPercentVolume() * 100)
+            if (Physics.Raycast(transform.position, (fa.transform.position - transform.position), out hit, 100, 1 << LayerMask.NameToLayer("Default")))
             {
-                fa.JoinCrew();
+              /*  Debug.DrawRay(transform.position, (fa.transform.position - transform.position), Color.green, 20, false);
+                Debug.Log(hit.transform.name, hit.transform.gameObject);*/
+
+                if (hit.transform == fa.transform)
+                {
+                    if (!fa.IsInCrew() && fa.volumeNeedToBeHire <= GetPercentVolume() * 100)
+                    {
+                        fa.JoinCrew();
+                    }
+                }
             }
+
+            
         }
     }
 
