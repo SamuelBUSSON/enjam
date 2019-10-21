@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="11" SoundbankVersion="134">
+	<RootPaths>
+		<ProjectRoot>D:\Utilisateurs\Samuel\Mes documents\Prison Break Dance WWISE\</ProjectRoot>
+		<SourceFilesRoot>D:\Utilisateurs\Samuel\Mes documents\Prison Break Dance WWISE\.cache\Windows\</SourceFilesRoot>
+		<SoundBanksRoot>D:\Utilisateurs\Samuel\Mes documents\Prison Break Dance WWISE\GeneratedSoundBanks\Windows\</SoundBanksRoot>
+		<ExternalSourcesInputFile></ExternalSourcesInputFile>
+		<ExternalSourcesOutputRoot>D:\Utilisateurs\Samuel\Mes documents\Prison Break Dance WWISE\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
+	</RootPaths>
+	<DialogueEvents/>
+	<StreamedFiles/>
+	<MediaFilesNotInAnyBank/>
+	<SoundBanks>
+		<SoundBank Id="1355168291" Language="SFX">
+			<ObjectPath>Init</ObjectPath>
+			<ShortName>Init</ShortName>
+			<Path>Init.bnk</Path>
+		</SoundBank>
+		<SoundBank Id="2239641395" Language="SFX">
+			<ObjectPath>\SoundBanks\Default Work Unit\fx_prison_break_dance</ObjectPath>
+			<ShortName>fx_prison_break_dance</ShortName>
+			<Path>fx_prison_break_dance.bnk</Path>
+			<IncludedEvents>
+				<Event Id="3796899585" Name="Big_door_destruction" ObjectPath="\Events\Default Work Unit\Big_door_destruction" DurationType="OneShot" DurationMin="2.197333" DurationMax="2.197333"/>
+				<Event Id="1432716332" Name="Game_over" ObjectPath="\Events\Default Work Unit\Game_over" DurationType="OneShot" DurationMin="1.685333" DurationMax="1.685333"/>
+				<Event Id="2058331390" Name="Guardian_interpelation_voice" ObjectPath="\Events\Default Work Unit\Guardian_interpelation_voice" DurationType="OneShot" DurationMin="0.190408" DurationMax="1.218514"/>
+				<Event Id="2419883523" Name="Guardian_suspicion_voice" ObjectPath="\Events\Default Work Unit\Guardian_suspicion_voice" DurationType="OneShot" DurationMin="0.240235" DurationMax="1.501901"/>
+				<Event Id="3529129042" Name="Prisoniers_happy_voice_in_party" ObjectPath="\Events\Default Work Unit\Prisoniers_happy_voice_in_party" DurationType="OneShot" DurationMin="0.283145" DurationMax="3.287849"/>
+				<Event Id="905402865" Name="Prisoniers_jump_in_party" ObjectPath="\Events\Default Work Unit\Prisoniers_jump_in_party" DurationType="OneShot" DurationMin="0.294667" DurationMax="0.581333"/>
+				<Event Id="1844306524" Name="Punch_to_wall" ObjectPath="\Events\Default Work Unit\Punch_to_wall" DurationType="Infinite"/>
+				<Event Id="264534872" Name="Wall_destruction" ObjectPath="\Events\Default Work Unit\Wall_destruction" DurationType="OneShot" DurationMin="0.735676" DurationMax="2.426442"/>
+			</IncludedEvents>
+			<IncludedMemoryFiles>
+				<File Id="19266869" Language="SFX">
+					<ShortName>Hun - Suspcion.wav</ShortName>
+					<Path>SFX\Hun - Suspcion_10C4C929.wem</Path>
+				</File>
+				<File Id="19427525" Language="SFX">
+					<ShortName>Hun un - Suspicion.wav</ShortName>
+					<Path>SFX\Hun un - Suspicion_629465BC.wem</Path>
+				</File>
+				<File Id="25257001" Language="SFX">
+					<ShortName>Heurh - Suspicion.wav</ShortName>
+					<Path>SFX\Heurh - Suspicion_4504949D.wem</Path>
+				</File>
+				<File Id="29880914" Language="SFX">
+					<ShortName>Ho - Suspicion.wav</ShortName>
+					<Path>SFX\Ho - Suspicion_A5DF59E6.wem</Path>
+				</File>
+				<File Id="40242985" Language="SFX">
+					<ShortName>Yaaeh.wav</ShortName>
+					<Path>SFX\Yaaeh_93FABE4F.wem</Path>
+				</File>
+				<File Id="59961311" Language="SFX">
+					<ShortName>Hayah - Suspicion.wav</ShortName>
+					<Path>SFX\Hayah - Suspicion_0C82CC6E.wem</Path>
+				</File>
+				<File Id="93194232" Language="SFX">
+					<ShortName>OUAIS.wav</ShortName>
+					<Path>SFX\OUAIS_F67573E7.wem</Path>
+				</File>
+				<File Id="96266071" Language="SFX">
+					<ShortName>Punch_Impact_3.wav</ShortName>
+					<Path>SFX\Punch_Impact_3_10C4C929.wem</Path>
+				</File>
+				<File Id="97394025" Language="SFX">
+					<ShortName>Hein - Suspicion 02.wav</ShortName>
+					<Path>SFX\Hein - Suspicion 02_10C4C929.wem</Path>
+				</File>
+				<File Id="97644841" Language="SFX">
+					<ShortName>Ya Ya Ya Ya !.wav</ShortName>
+					<Path>SFX\Ya Ya Ya Ya !_F48BDD84.wem</Path>
+				</File>
+				<File Id="104584751" Language="SFX">
+					<ShortName>Oh - Suspicion 01.wav</ShortName>
+					<Path>SFX\Oh - Suspicion 01_9ADA4122.wem</Path>
+				</File>
+				<File Id="120010090" Language="SFX">
+					<ShortName>Hé - Suspicion.wav</ShortName>
+					<Path>SFX\Hé - Suspicion_AD29F59C.wem</Path>
+				</File>
+				<File Id="137075482" Language="SFX">
+					<ShortName>Hein - Suspicion 01 (soft).wav</ShortName>
+					<Path>SFX\Hein - Suspicion 01 (soft)_925736C5.wem</Path>
+				</File>
+				<File Id="138997309" Language="SFX">
+					<ShortName>Wall_Destruction 10.wav</ShortName>
+					<Path>SFX\Wall_Destruction 10_10C4C929.wem</Path>
+				</File>
+				<File Id="141266000" Language="SFX">
+					<ShortName>Go go go.wav</ShortName>
+					<Path>SFX\Go go go_B96473EE.wem</Path>
+				</File>
+				<File Id="155005255" Language="SFX">
+					<ShortName>Heum - Suspicion.wav</ShortName>
+					<Path>SFX\Heum - Suspicion_011DF17F.wem</Path>
+				</File>
+				<File Id="155988449" Language="SFX">
+					<ShortName>Punch_Impact_4.wav</ShortName>
+					<Path>SFX\Punch_Impact_4_10C4C929.wem</Path>
+				</File>
+				<File Id="157365046" Language="SFX">
+					<ShortName>Hé - Interpelation 08.wav</ShortName>
+					<Path>SFX\Hé - Interpelation 08_5CE023EB.wem</Path>
+				</File>
+				<File Id="174677703" Language="SFX">
+					<ShortName>Hohi - Interpelation.wav</ShortName>
+					<Path>SFX\Hohi - Interpelation_DE9DB5B2.wem</Path>
+				</File>
+				<File Id="187201995" Language="SFX">
+					<ShortName>Hé - Interpelation 07.wav</ShortName>
+					<Path>SFX\Hé - Interpelation 07_24371B26.wem</Path>
+				</File>
+				<File Id="223595048" Language="SFX">
+					<ShortName>Wouaiais !.wav</ShortName>
+					<Path>SFX\Wouaiais !_088C9F9F.wem</Path>
+				</File>
+				<File Id="223650472" Language="SFX">
+					<ShortName>Big Door &amp; Wall Destruction.wav</ShortName>
+					<Path>SFX\Big Door &amp; Wall Destruction_10C4C929.wem</Path>
+				</File>
+				<File Id="224383010" Language="SFX">
+					<ShortName>Hé - Interpelation 06.wav</ShortName>
+					<Path>SFX\Hé - Interpelation 06_6C8244EA.wem</Path>
+				</File>
+				<File Id="225342469" Language="SFX">
+					<ShortName>Wall_Destruction 05 Variation 1 .wav</ShortName>
+					<Path>SFX\Wall_Destruction 05 Variation 1 _10C4C929.wem</Path>
+				</File>
+				<File Id="243142411" Language="SFX">
+					<ShortName>Wouhou.wav</ShortName>
+					<Path>SFX\Wouhou_BC4450E5.wem</Path>
+				</File>
+				<File Id="248183812" Language="SFX">
+					<ShortName>Punch_Impact_16.wav</ShortName>
+					<Path>SFX\Punch_Impact_16_10C4C929.wem</Path>
+				</File>
+				<File Id="267039866" Language="SFX">
+					<ShortName>Hé - Interpelation 04 (surprise).wav</ShortName>
+					<Path>SFX\Hé - Interpelation 04 (surprise)_D4CD139E.wem</Path>
+				</File>
+				<File Id="287158326" Language="SFX">
+					<ShortName>Hé - Interpelation 01.wav</ShortName>
+					<Path>SFX\Hé - Interpelation 01_3836755B.wem</Path>
+				</File>
+				<File Id="302618581" Language="SFX">
+					<ShortName>Hey - Suspicion.wav</ShortName>
+					<Path>SFX\Hey - Suspicion_08C67D79.wem</Path>
+				</File>
+				<File Id="315289278" Language="SFX">
+					<ShortName>Punch_Impact_6.wav</ShortName>
+					<Path>SFX\Punch_Impact_6_10C4C929.wem</Path>
+				</File>
+				<File Id="317689516" Language="SFX">
+					<ShortName>Wall_Destruction 06.wav</ShortName>
+					<Path>SFX\Wall_Destruction 06_10C4C929.wem</Path>
+				</File>
+				<File Id="321635378" Language="SFX">
+					<ShortName>Punch_Impact_10.wav</ShortName>
+					<Path>SFX\Punch_Impact_10_10C4C929.wem</Path>
+				</File>
+				<File Id="326786723" Language="SFX">
+					<ShortName>Wall_Destruction 09 Variation 1.wav</ShortName>
+					<Path>SFX\Wall_Destruction 09 Variation 1_10C4C929.wem</Path>
+				</File>
+				<File Id="338430962" Language="SFX">
+					<ShortName>Wall_Destruction 07.wav</ShortName>
+					<Path>SFX\Wall_Destruction 07_10C4C929.wem</Path>
+				</File>
+				<File Id="347639879" Language="SFX">
+					<ShortName>Oh Oh Oh.wav</ShortName>
+					<Path>SFX\Oh Oh Oh_F4B93035.wem</Path>
+				</File>
+				<File Id="347992496" Language="SFX">
+					<ShortName>Hé - Interpelation 02.wav</ShortName>
+					<Path>SFX\Hé - Interpelation 02_8E7DC189.wem</Path>
+				</File>
+				<File Id="348798131" Language="SFX">
+					<ShortName>Hein - Suspicion 03.wav</ShortName>
+					<Path>SFX\Hein - Suspicion 03_78D07868.wem</Path>
+				</File>
+				<File Id="350723451" Language="SFX">
+					<ShortName>Hé - Interpelation 09.wav</ShortName>
+					<Path>SFX\Hé - Interpelation 09_18DD0F96.wem</Path>
+				</File>
+				<File Id="353373244" Language="SFX">
+					<ShortName>Wall_Destruction 06 Variation 1 .wav</ShortName>
+					<Path>SFX\Wall_Destruction 06 Variation 1 _10C4C929.wem</Path>
+				</File>
+				<File Id="361888847" Language="SFX">
+					<ShortName>Punch_Impact_5.wav</ShortName>
+					<Path>SFX\Punch_Impact_5_10C4C929.wem</Path>
+				</File>
+				<File Id="366671002" Language="SFX">
+					<ShortName>Yeah.wav</ShortName>
+					<Path>SFX\Yeah_33B43B2D.wem</Path>
+				</File>
+				<File Id="367233504" Language="SFX">
+					<ShortName>Pompelup 02.wav</ShortName>
+					<Path>SFX\Pompelup 02_E0A31E6B.wem</Path>
+				</File>
+				<File Id="374966347" Language="SFX">
+					<ShortName>Game Over.wav</ShortName>
+					<Path>SFX\Game Over_10C4C929.wem</Path>
+				</File>
+				<File Id="387159478" Language="SFX">
+					<ShortName>Vous - Interpelation 03.wav</ShortName>
+					<Path>SFX\Vous - Interpelation 03_441BC467.wem</Path>
+				</File>
+				<File Id="396958709" Language="SFX">
+					<ShortName>Ohohoh.wav</ShortName>
+					<Path>SFX\Ohohoh_DB2E6C75.wem</Path>
+				</File>
+				<File Id="398920986" Language="SFX">
+					<ShortName>Wall_Destruction 03.wav</ShortName>
+					<Path>SFX\Wall_Destruction 03_10C4C929.wem</Path>
+				</File>
+				<File Id="409445749" Language="SFX">
+					<ShortName>Punch_Impact_12.wav</ShortName>
+					<Path>SFX\Punch_Impact_12_10C4C929.wem</Path>
+				</File>
+				<File Id="414715670" Language="SFX">
+					<ShortName>Wouais.wav</ShortName>
+					<Path>SFX\Wouais_E00F9245.wem</Path>
+				</File>
+				<File Id="451050963" Language="SFX">
+					<ShortName>Hé - Interpelation 14.wav</ShortName>
+					<Path>SFX\Hé - Interpelation 14_A3AFA993.wem</Path>
+				</File>
+				<File Id="453684896" Language="SFX">
+					<ShortName>Wall_Destruction 09.wav</ShortName>
+					<Path>SFX\Wall_Destruction 09_10C4C929.wem</Path>
+				</File>
+				<File Id="478213676" Language="SFX">
+					<ShortName>Punch_Impact_8.wav</ShortName>
+					<Path>SFX\Punch_Impact_8_10C4C929.wem</Path>
+				</File>
+				<File Id="490782576" Language="SFX">
+					<ShortName>Humhum ! - Suspicion.wav</ShortName>
+					<Path>SFX\Humhum ! - Suspicion_06637179.wem</Path>
+				</File>
+				<File Id="491589493" Language="SFX">
+					<ShortName>Punch_Impact_9.wav</ShortName>
+					<Path>SFX\Punch_Impact_9_10C4C929.wem</Path>
+				</File>
+				<File Id="504355767" Language="SFX">
+					<ShortName>Punch_Impact_15.wav</ShortName>
+					<Path>SFX\Punch_Impact_15_10C4C929.wem</Path>
+				</File>
+				<File Id="519559358" Language="SFX">
+					<ShortName>Humpf - Suspicion.wav</ShortName>
+					<Path>SFX\Humpf - Suspicion_70FD9DB7.wem</Path>
+				</File>
+				<File Id="524641118" Language="SFX">
+					<ShortName>Jump 1 Variation 4.wav</ShortName>
+					<Path>SFX\Jump 1 Variation 4_10C4C929.wem</Path>
+				</File>
+				<File Id="543145687" Language="SFX">
+					<ShortName>Jump 1 Variation 6.wav</ShortName>
+					<Path>SFX\Jump 1 Variation 6_10C4C929.wem</Path>
+				</File>
+				<File Id="545694109" Language="SFX">
+					<ShortName>Wall_Destruction 01.wav</ShortName>
+					<Path>SFX\Wall_Destruction 01_10C4C929.wem</Path>
+				</File>
+				<File Id="556583201" Language="SFX">
+					<ShortName>Punch_Impact_7.wav</ShortName>
+					<Path>SFX\Punch_Impact_7_10C4C929.wem</Path>
+				</File>
+				<File Id="578032386" Language="SFX">
+					<ShortName>Huunmh - Suspicion.wav</ShortName>
+					<Path>SFX\Huunmh - Suspicion_C0A2F4C5.wem</Path>
+				</File>
+				<File Id="579823186" Language="SFX">
+					<ShortName>Heuhum - Suspicion.wav</ShortName>
+					<Path>SFX\Heuhum - Suspicion_26DCDC7E.wem</Path>
+				</File>
+				<File Id="601013096" Language="SFX">
+					<ShortName>Ouais Ouais Ouais.wav</ShortName>
+					<Path>SFX\Ouais Ouais Ouais_6327B4DB.wem</Path>
+				</File>
+				<File Id="601331676" Language="SFX">
+					<ShortName>Wall_Destruction 02.wav</ShortName>
+					<Path>SFX\Wall_Destruction 02_10C4C929.wem</Path>
+				</File>
+				<File Id="643720063" Language="SFX">
+					<ShortName>Hé - Interpelation 05 (Surprise).wav</ShortName>
+					<Path>SFX\Hé - Interpelation 05 (Surprise)_93C98673.wem</Path>
+				</File>
+				<File Id="658051919" Language="SFX">
+					<ShortName>Jump 1.wav</ShortName>
+					<Path>SFX\Jump 1_10C4C929.wem</Path>
+				</File>
+				<File Id="719915163" Language="SFX">
+					<ShortName>Hé hé - Interpelation.wav</ShortName>
+					<Path>SFX\Hé hé - Interpelation_62688AF0.wem</Path>
+				</File>
+				<File Id="725381453" Language="SFX">
+					<ShortName>Ho - Interpelation 05.wav</ShortName>
+					<Path>SFX\Ho - Interpelation 05_B520EBD1.wem</Path>
+				</File>
+				<File Id="740411858" Language="SFX">
+					<ShortName>Heuuh - Suspicion.wav</ShortName>
+					<Path>SFX\Heuuh - Suspicion_331A292E.wem</Path>
+				</File>
+				<File Id="747662141" Language="SFX">
+					<ShortName>Oh - Interpelation 01 (soft).wav</ShortName>
+					<Path>SFX\Oh - Interpelation 01 (soft)_F4168873.wem</Path>
+				</File>
+				<File Id="760169741" Language="SFX">
+					<ShortName>Humhum - Suspicion.wav</ShortName>
+					<Path>SFX\Humhum - Suspicion_2DF47D0E.wem</Path>
+				</File>
+				<File Id="764739689" Language="SFX">
+					<ShortName>Hum Hum Hum.wav</ShortName>
+					<Path>SFX\Hum Hum Hum_C0EE7EC1.wem</Path>
+				</File>
+				<File Id="785098919" Language="SFX">
+					<ShortName>Youpi.wav</ShortName>
+					<Path>SFX\Youpi_C2EE4B5A.wem</Path>
+				</File>
+				<File Id="795823993" Language="SFX">
+					<ShortName>Wall_Destruction 06 Variation 2.wav</ShortName>
+					<Path>SFX\Wall_Destruction 06 Variation 2_10C4C929.wem</Path>
+				</File>
+				<File Id="806912517" Language="SFX">
+					<ShortName>Wall_Destruction 05.wav</ShortName>
+					<Path>SFX\Wall_Destruction 05_10C4C929.wem</Path>
+				</File>
+				<File Id="811286634" Language="SFX">
+					<ShortName>Oh - Interpelation 02 (soft).wav</ShortName>
+					<Path>SFX\Oh - Interpelation 02 (soft)_6D88C051.wem</Path>
+				</File>
+				<File Id="823444500" Language="SFX">
+					<ShortName>Hey la - Interpelation 02.wav</ShortName>
+					<Path>SFX\Hey la - Interpelation 02_B52714F6.wem</Path>
+				</File>
+				<File Id="828839104" Language="SFX">
+					<ShortName>Hé - Interpelation 12.wav</ShortName>
+					<Path>SFX\Hé - Interpelation 12_3000033A.wem</Path>
+				</File>
+				<File Id="832684056" Language="SFX">
+					<ShortName>Aller.wav</ShortName>
+					<Path>SFX\Aller_62A7DB7F.wem</Path>
+				</File>
+				<File Id="835778835" Language="SFX">
+					<ShortName>Vous - Interpelation 01.wav</ShortName>
+					<Path>SFX\Vous - Interpelation 01_24C64F28.wem</Path>
+				</File>
+				<File Id="836399345" Language="SFX">
+					<ShortName>Wall_Destruction 06 Variation 3.wav</ShortName>
+					<Path>SFX\Wall_Destruction 06 Variation 3_10C4C929.wem</Path>
+				</File>
+				<File Id="837357885" Language="SFX">
+					<ShortName>Wall_Destruction 08.wav</ShortName>
+					<Path>SFX\Wall_Destruction 08_10C4C929.wem</Path>
+				</File>
+				<File Id="843129188" Language="SFX">
+					<ShortName>Wall_Destruction 04.wav</ShortName>
+					<Path>SFX\Wall_Destruction 04_10C4C929.wem</Path>
+				</File>
+				<File Id="844208930" Language="SFX">
+					<ShortName>Arretez-vous - Interpelation.wav</ShortName>
+					<Path>SFX\Arretez-vous - Interpelation_7089D5C9.wem</Path>
+				</File>
+				<File Id="849783607" Language="SFX">
+					<ShortName>Ooh Yeah.wav</ShortName>
+					<Path>SFX\Ooh Yeah_72EE8691.wem</Path>
+				</File>
+				<File Id="854344987" Language="SFX">
+					<ShortName>Oh - Interpelation 03.wav</ShortName>
+					<Path>SFX\Oh - Interpelation 03_7846E471.wem</Path>
+				</File>
+				<File Id="861796442" Language="SFX">
+					<ShortName>Hein - Suspicion 05.wav</ShortName>
+					<Path>SFX\Hein - Suspicion 05_F1EDC1D6.wem</Path>
+				</File>
+				<File Id="877416544" Language="SFX">
+					<ShortName>Jump 1 Variation 5.wav</ShortName>
+					<Path>SFX\Jump 1 Variation 5_10C4C929.wem</Path>
+				</File>
+				<File Id="887978172" Language="SFX">
+					<ShortName>Ha - Suspicion 01.wav</ShortName>
+					<Path>SFX\Ha - Suspicion 01_089AE281.wem</Path>
+				</File>
+				<File Id="890418654" Language="SFX">
+					<ShortName>Poumpeleuh.wav</ShortName>
+					<Path>SFX\Poumpeleuh_DB4E9E3E.wem</Path>
+				</File>
+				<File Id="905373629" Language="SFX">
+					<ShortName>Aller Aller.wav</ShortName>
+					<Path>SFX\Aller Aller_ACD2E7DC.wem</Path>
+				</File>
+				<File Id="928268535" Language="SFX">
+					<ShortName>Hé vous - Interpelation.wav</ShortName>
+					<Path>SFX\Hé vous - Interpelation_75EA8070.wem</Path>
+				</File>
+				<File Id="929242841" Language="SFX">
+					<ShortName>Woooh !....wav</ShortName>
+					<Path>SFX\Woooh !..._FB3B5C64.wem</Path>
+				</File>
+				<File Id="971635885" Language="SFX">
+					<ShortName>Oooh !....wav</ShortName>
+					<Path>SFX\Oooh !..._7998E09B.wem</Path>
+				</File>
+				<File Id="971958278" Language="SFX">
+					<ShortName>Punch_Impact_11.wav</ShortName>
+					<Path>SFX\Punch_Impact_11_10C4C929.wem</Path>
+				</File>
+				<File Id="973891681" Language="SFX">
+					<ShortName>Hein - Suspicion 04 (soft).wav</ShortName>
+					<Path>SFX\Hein - Suspicion 04 (soft)_67675852.wem</Path>
+				</File>
+				<File Id="1002344035" Language="SFX">
+					<ShortName>Huum - Suspicion.wav</ShortName>
+					<Path>SFX\Huum - Suspicion_02D271E4.wem</Path>
+				</File>
+				<File Id="1002418021" Language="SFX">
+					<ShortName>Hoo - Suspicion.wav</ShortName>
+					<Path>SFX\Hoo - Suspicion_6736EA00.wem</Path>
+				</File>
+				<File Id="1012835963" Language="SFX">
+					<ShortName>Hé - Interpelation 03 (soft).wav</ShortName>
+					<Path>SFX\Hé - Interpelation 03 (soft)_5F44957D.wem</Path>
+				</File>
+				<File Id="1012899672" Language="SFX">
+					<ShortName>Ohoh.wav</ShortName>
+					<Path>SFX\Ohoh_6DCFC59D.wem</Path>
+				</File>
+				<File Id="1024635138" Language="SFX">
+					<ShortName>Punch_Impact_19.wav</ShortName>
+					<Path>SFX\Punch_Impact_19_10C4C929.wem</Path>
+				</File>
+				<File Id="1049839947" Language="SFX">
+					<ShortName>Hé - Interpelation 03.wav</ShortName>
+					<Path>SFX\Hé - Interpelation 03_DD9B0BB1.wem</Path>
+				</File>
+				<File Id="1063268105" Language="SFX">
+					<ShortName>Heumhun - Suspicion.wav</ShortName>
+					<Path>SFX\Heumhun - Suspicion_EC83E2D6.wem</Path>
+				</File>
+			</IncludedMemoryFiles>
+		</SoundBank>
+		<SoundBank Id="3781611917" Language="SFX">
+			<ObjectPath>\SoundBanks\Default Work Unit\music_prison_breakdance</ObjectPath>
+			<ShortName>music_prison_breakdance</ShortName>
+			<Path>music_prison_breakdance.bnk</Path>
+			<IncludedEvents>
+				<Event Id="3569257109" Name="Play_music_game_idle" ObjectPath="\Events\Default Work Unit\Play_music_game_idle" DurationType="Infinite"/>
+				<Event Id="854648521" Name="Play_music_game_party" ObjectPath="\Events\Default Work Unit\Play_music_game_party" DurationType="Infinite"/>
+				<Event Id="1699343283" Name="Play_music_menu" ObjectPath="\Events\Default Work Unit\Play_music_menu" DurationType="Infinite"/>
+			</IncludedEvents>
+			<IncludedMemoryFiles>
+				<File Id="386340192" Language="SFX">
+					<ShortName>Mind Recovery - Master.wav</ShortName>
+					<Path>SFX\Mind Recovery - Master_D79FB2B7.wem</Path>
+				</File>
+				<File Id="812490206" Language="SFX">
+					<ShortName>Keep The Silence Rythm - Master Modif loop.wav</ShortName>
+					<Path>SFX\Keep The Silence Rythm - Master Modif loop_D79FB2B7.wem</Path>
+				</File>
+				<File Id="871505469" Language="SFX">
+					<ShortName>Keep The Silence Rythm - Master Modif 2.wav</ShortName>
+					<Path>SFX\Keep The Silence Rythm - Master Modif 2_D79FB2B7.wem</Path>
+				</File>
+			</IncludedMemoryFiles>
+		</SoundBank>
+	</SoundBanks>
+</SoundBanksInfo>

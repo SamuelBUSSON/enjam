@@ -1,0 +1,14 @@
+Event	ID	Name			Wwise Object Path	Notes
+	854648521	Play_music_game_party			\Default Work Unit\Play_music_game_party	
+	1699343283	Play_music_menu			\Default Work Unit\Play_music_menu	
+	3569257109	Play_music_game_idle			\Default Work Unit\Play_music_game_idle	
+
+Game Parameter	ID	Name			Wwise Object Path	Notes
+	1267577004	volume_idle			\Default Work Unit\volume_idle	
+	3589652074	volume_party			\Default Work Unit\volume_party	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	386340192	Mind Recovery - Master	D:\Utilisateurs\Samuel\Mes documents\Prison Break Dance WWISE\.cache\Windows\SFX\Mind Recovery - Master_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\music_game_party\music_party\Mind Recovery - Master		9771672
+	812490206	Keep The Silence Rythm - Master Modif loop	D:\Utilisateurs\Samuel\Mes documents\Prison Break Dance WWISE\.cache\Windows\SFX\Keep The Silence Rythm - Master Modif loop_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\music_game_idle\music_idle\Keep The Silence Rythm - Master Modif loop		2608812
+	871505469	Keep The Silence Rythm - Master Modif 2	D:\Utilisateurs\Samuel\Mes documents\Prison Break Dance WWISE\.cache\Windows\SFX\Keep The Silence Rythm - Master Modif 2_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\music_menu\music_menu\Keep The Silence Rythm - Master Modif 2		1306168
+
