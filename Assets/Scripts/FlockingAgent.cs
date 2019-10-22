@@ -117,6 +117,7 @@ public class FlockingAgent : MonoBehaviour
             animator.SetBool("IsIdle", true);
             animator.SetBool("IsDancing", false);
             ResetCarac();
+            SetLayerRecursively(gameObject, 0);
         }
     }
 
