@@ -184,14 +184,36 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: 91a4ed931c0ce142ae1827d99853b99a
     GuidInternal: 
-    m_lastTime: -8586300331634775808
-    List: []
+    m_lastTime: -8586296970774775808
+    List:
+    - name: reverb_prison
+      guid: 425c600b776ea148a9b32a807b4e604f
+      id: 2711940289
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+      - ElementName: reverb_prison
+        ObjectType: 1
+      Path: Default Work Unit\Master Audio Bus\reverb_prison
+    - name: reverb_prison_idle
+      guid: 2eb4ca79d4543c4f8447e15d96356411
+      id: 1015808826
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+      - ElementName: reverb_prison_idle
+        ObjectType: 1
+      Path: Default Work Unit\Master Audio Bus\reverb_prison_idle
   BankWwu:
   - PhysicalPath: SoundBanks\Default Work Unit.wwu
     ParentPhysicalPath: 
     guid: 27dc000cc4bf2b45876003cf235e4b78
     GuidInternal: 
-    m_lastTime: -8586300134194775808
+    m_lastTime: -8586296787354775808
     List:
     - name: fx_prison_break_dance
       guid: 6275c45b2095d84caf82915189520443
@@ -216,20 +238,8 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: a851727b99a22e468d9b706c7fe30dc9
     GuidInternal: 
-    m_lastTime: -8586300125828610588
+    m_lastTime: -8586296787794775808
     List:
-    - name: Big_door_destruction
-      guid: 4150ff46160ccb429e5cdaf386a92cab
-      id: 3796899585
-      PathAndIcons:
-      - ElementName: Default Work Unit
-        ObjectType: 12
-      - ElementName: Big_door_destruction
-        ObjectType: 3
-      Path: Default Work Unit\Big_door_destruction
-      maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
     - name: Game_over
       guid: 5d2ecb758255d640ab7cee9ee1f92480
       id: 1432716332
@@ -254,6 +264,18 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
+    - name: Guardian_Sifflet
+      guid: 4a7b1d916f191a4aa74cfebbed46bfe6
+      id: 966288710
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Guardian_Sifflet
+        ObjectType: 3
+      Path: Default Work Unit\Guardian_Sifflet
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
     - name: Guardian_suspicion_voice
       guid: f959dc05d66a2a4fbd9f67c7a06f5859
       id: 2419883523
@@ -263,6 +285,30 @@ MonoBehaviour:
       - ElementName: Guardian_suspicion_voice
         ObjectType: 3
       Path: Default Work Unit\Guardian_suspicion_voice
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Load_credit_sound
+      guid: e50703561d76784c9171aa54d6309cf8
+      id: 1649812135
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Load_credit_sound
+        ObjectType: 3
+      Path: Default Work Unit\Load_credit_sound
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Load_game_play_sound
+      guid: 3a44c9988e19364a8ffa0cf11308459f
+      id: 3652308311
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Load_game_play_sound
+        ObjectType: 3
+      Path: Default Work Unit\Load_game_play_sound
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
@@ -338,6 +384,30 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
+    - name: Stop_at_the_end
+      guid: 7c916f6bdc7a1a4b9e02a6252b9e2edc
+      id: 1805424081
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Stop_at_the_end
+        ObjectType: 3
+      Path: Default Work Unit\Stop_at_the_end
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Stop_music_menu
+      guid: 7b0ff334a32fc443a546d64d85a5ba91
+      id: 106912753
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Stop_music_menu
+        ObjectType: 3
+      Path: Default Work Unit\Stop_music_menu
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
     - name: Wall_destruction
       guid: da5a1cda8d0b8b4c8cb06c2be5b67bce
       id: 264534872
@@ -350,13 +420,34 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
+    - name: Win_end
+      guid: 92eb66f3a0104c4b8506e9d65bd0a785
+      id: 3174847407
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Win_end
+        ObjectType: 3
+      Path: Default Work Unit\Win_end
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
   RtpcWwu:
   - PhysicalPath: Game Parameters\Default Work Unit.wwu
     ParentPhysicalPath: 
     guid: 02708eefffb99e4c93f817ce177f14bc
     GuidInternal: 
-    m_lastTime: -8586300136834775808
+    m_lastTime: -8586297574974775808
     List:
+    - name: High_Pass
+      guid: 0ffb102a60c5654585807d690f130ff6
+      id: 2917986703
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: High_Pass
+        ObjectType: 13
+      Path: Default Work Unit\High_Pass
     - name: volume
       guid: 6640ad07f004e4408680b54b1c7c2656
       id: 2415836739
@@ -509,34 +600,40 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: 614adf102d96e84988f16b06db394235
     GuidInternal: 
-    m_lastTime: -8586301113634775808
-    List:
-    - name: New_State_Group
-      guid: 22bb8d3bbbc37b48aa893b26ccfb60d2
-      id: 2012657067
-      PathAndIcons:
-      - ElementName: Default Work Unit
-        ObjectType: 12
-      - ElementName: New_State_Group
-        ObjectType: 9
-      Path: Default Work Unit\New_State_Group
-      values:
-      - name: None
-        guid: c70c84b1b45595488983fd9018a482a5
-        id: 748895195
-        PathAndIcons:
-        - ElementName: None
-          ObjectType: 8
-      ValueGuids: []
-      ValueIcons: []
-      valuesInternal: []
+    m_lastTime: -8586297767274775808
+    List: []
   SwitchWwu:
   - PhysicalPath: Switches\Default Work Unit.wwu
     ParentPhysicalPath: 
     guid: bf2a23a711e4314a8b44eed14d310b7b
     GuidInternal: 
-    m_lastTime: -8586301144714775808
-    List: []
+    m_lastTime: -8586297758294775808
+    List:
+    - name: Musc_in_game
+      guid: 6b97b41276e9d247a5f32fcb2c86f525
+      id: 665349534
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Musc_in_game
+        ObjectType: 11
+      Path: Default Work Unit\Musc_in_game
+      values:
+      - name: Idle
+        guid: 60328e0c8d9b4843acae85ad51e6976e
+        id: 1874288895
+        PathAndIcons:
+        - ElementName: Idle
+          ObjectType: 10
+      - name: Party
+        guid: d4763b8f69d4ae43ba20ccfd76b31044
+        id: 3177314091
+        PathAndIcons:
+        - ElementName: Party
+          ObjectType: 10
+      ValueGuids: []
+      ValueIcons: []
+      valuesInternal: []
   TriggerWwu:
   - PhysicalPath: Triggers\Default Work Unit.wwu
     ParentPhysicalPath: 

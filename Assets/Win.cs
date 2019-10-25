@@ -14,6 +14,12 @@ public class Win : MonoBehaviour
             winCanvas.enabled = true;
             GameManager.instance.currentState = GameManager.State.victory;
 
+            /* Sound */
+            AkSoundEngine.PostEvent("Win_end", gameObject);
+            AkSoundEngine.PostEvent("Stop_at_the_end", gameObject); 
+
+
+
         }
     }
 }
